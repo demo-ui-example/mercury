@@ -1,1 +1,1 @@
-https://alphacreativee.github.io/mercury-phu-quoc/
+https://demo-ui-example.github.io/mercury/

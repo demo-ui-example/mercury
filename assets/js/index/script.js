@@ -444,6 +444,10 @@ function loadingBanner() {
           $("#cta-mess").removeClass("hide");
         }
 
+        if ($(".banner-booking").length) {
+          $(".banner-booking").removeClass("hide");
+        }
+
         let start = self.start;
 
         self.scroll(self.start);
