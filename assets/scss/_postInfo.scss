@@ -1,0 +1,141 @@
+.post-info {
+  &__wrapper {
+    padding: 0 80px;
+    @media (max-width: 991px) {
+      padding: 0 24px;
+    }
+    &:not(:first-child) {
+      margin-top: 140px;
+      @media (max-width: 991px) {
+        margin-top: 64px;
+      }
+    }
+
+    &.flex-row-reverse {
+      .col-content {
+        padding-left: 0;
+        padding-right: calc(100% / 12);
+      }
+    }
+
+    .col-media {
+      .gallery {
+        @media (max-width: 991px) {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+          margin-top: 8px;
+        }
+        &-item {
+          @media (max-width: 991px) {
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+            aspect-ratio: 160 / 110;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+      .swiper {
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        @media (max-width: 991px) {
+          height: auto;
+        }
+        &-slide {
+          width: 100%;
+          aspect-ratio: 737 / 640;
+          max-height: 640px;
+          overflow: hidden;
+          @media (max-width: 991px) {
+            aspect-ratio: 327 / 390;
+            max-height: fit-content;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    .col-content {
+      padding-left: calc(100% / 12);
+      @media (max-width: 991px) {
+        padding-left: 0;
+        margin-top: 32px;
+      }
+      .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        height: 100%;
+        @media (max-width: 991px) {
+          gap: 24px;
+        }
+
+        .desc {
+          text-align: justify;
+        }
+      }
+
+      .contact {
+        flex-direction: column;
+        gap: 24px;
+
+        .item {
+          gap: 8px;
+        }
+      }
+
+      .content-bottom {
+        margin-top: auto;
+
+        .cta {
+          width: max-content;
+
+          &-group {
+            gap: 24px;
+            flex-wrap: wrap;
+
+            &__item {
+              min-width: calc(50% - 12px);
+            }
+          }
+        }
+
+        .gallery {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+          margin-top: 40px;
+
+          &-item {
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 194 / 130;
+
+            &::after {
+              content: "";
+              background-color: rgba($color: #000000, $alpha: 0.2);
+              inset: 0;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}

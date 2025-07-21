@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Hermes";
+  src: url("Hermes.eot");
+  src: url("Hermes.eot?#iefix") format("embedded-opentype"),
+    url("Hermes.woff2") format("woff2"), url("Hermes.woff") format("woff"),
+    url("Hermes.ttf") format("truetype"), url("Hermes.svg#Hermes") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

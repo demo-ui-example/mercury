@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'SVN-Domaine Display';
+    src: url('SVN-DomaineDisplay-Regular.eot');
+    src: url('SVN-DomaineDisplay-Regular.eot?#iefix') format('embedded-opentype'),
+        url('SVN-DomaineDisplay-Regular.woff2') format('woff2'),
+        url('SVN-DomaineDisplay-Regular.woff') format('woff'),
+        url('SVN-DomaineDisplay-Regular.ttf') format('truetype'),
+        url('SVN-DomaineDisplay-Regular.svg#SVN-DomaineDisplay-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

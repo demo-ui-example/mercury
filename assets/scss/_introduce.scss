@@ -1,0 +1,88 @@
+.introduce {
+  padding-top: 100px;
+  background-image: url("../../images/use/img-artwork-sec.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  &-box {
+    margin-bottom: 100px;
+    @media (max-width: 991px) {
+      margin-bottom: 64px;
+    }
+  }
+  &-heading {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+  &-content {
+    position: relative;
+    @media (max-width: 991px) {
+      margin-inline: auto;
+    }
+  }
+
+  &-description {
+    max-width: calc(100% - 16.6667%);
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+    @media (max-width: 991px) {
+      max-width: 100%;
+    }
+  }
+  &-main {
+    max-width: calc(100% - 160px);
+    margin: 0 auto;
+    position: relative;
+    @media (max-width: 991px) {
+      max-width: calc(100% - 48px);
+    }
+  }
+  &-highlight {
+    position: absolute;
+    left: 80px;
+    bottom: 80px;
+    background-color: var(--color-primary);
+    max-width: 320px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 48px 32px;
+    z-index: 2;
+    @media (max-width: 991px) {
+      max-width: calc(100% - 48px);
+      position: relative;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 32px;
+    }
+    h2 {
+      margin-bottom: 16px;
+      @media (max-width: 991px) {
+        font-size: 24px;
+      }
+    }
+  }
+  &-img {
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 1440 / 720;
+    position: relative;
+    @media (max-width: 991px) {
+      aspect-ratio: 327 / 184;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

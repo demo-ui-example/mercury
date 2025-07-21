@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destination detail</title>
+    <!-- import favicon -->
+    <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon" />
+    <!-- meta -->
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+    <!-- meta -->
+    <link rel="stylesheet" href="./assets/libs/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/libs/lenis.css" />
+    <link rel="stylesheet" href="./assets/libs/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./assets/libs/lightpick.min.css" />
+    <!-- end meta -->
+    <!-- link custom css page -->
+    <link rel="stylesheet" href="./assets/fonts/Futura/font.css" />
+    <link rel="stylesheet" href="./assets/fonts/Domaine/font.css" />
+    <link rel="stylesheet" href="./assets/fonts/Hermes/font.css" />
+    <link rel="stylesheet" href="./assets/main/css/style.min.css" />
+    <!-- end link custom css page -->
+    <!-- scrollRestoration -->
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+    </script>
+  </head>
+  <body>
+    <!-- layout -->
+    <!-- header -->
+    <script>
+      fetch("./components/header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+          const currentPath = window.location.pathname || "/";
+          const navLinks = document.querySelectorAll(".header-container nav a");
+          navLinks.forEach((link) => {
+            const linkPath = link.getAttribute("href");
+            if (
+              linkPath === currentPath ||
+              (currentPath === "/" && linkPath === "/")
+            ) {
+              link.classList.add("active");
+            }
+          });
+        });
+    </script>
+    <header id="header"></header>
+    <!-- end header -->
+    <main>
+      <section class="banner option-left">
+        <div class="container-fluid p-0">
+          <div class="banner-container">
+            <picture>
+              <img src="./assets/images/banner.jpg" alt="" />
+            </picture>
+            <div class="banner-title h0-font color-secondary font-heading">
+              savor the flavors, embrace the views
+            </div>
+            <div class="banner-booking d-none">
+              <form action="">
+                <div class="check-in">
+                  <input
+                    type="text"
+                    name="CheckInDate"
+                    id="check-in"
+                    placeholder="Ngày đến"
+                  />
+                </div>
+                <div class="check-out">
+                  <input
+                    type="text"
+                    name="CheckOutDate"
+                    id="check-out"
+                    placeholder="Ngày đi"
+                  />
+                </div>
+                <div class="people">
+                  <div class="label">Người lớn</div>
+                  <div class="select">
+                    <div class="min">-</div>
+                    <div class="val">0</div>
+                    <div class="plus">+</div>
+                  </div>
+                </div>
+                <div class="child">
+                  <div class="label">Trẻ em</div>
+                  <div class="select">
+                    <div class="min">-</div>
+                    <div class="val">0</div>
+                    <div class="plus">+</div>
+                  </div>
+                </div>
+                <button class="b2-font color-white text-uppercase">
+                  tìm phòng
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="spacing-14x"></div>
+      <section class="destination-detail">
+        <div class="container-fluid p-0">
+          <div class="detail-wrapper row g-0">
+            <div class="col-lg-6 col-12 col-content">
+              <h1 class="title font-heading f48-1">Thị trấn Dương Đông</h1>
+              <div class="excerpt h1-font font-heading">
+                Dương Đông Phú Quốc là một thị trấn náo nhiệt, sầm uất và được
+                mệnh danh là “trái tim của Phú Quốc”. Đến Dương Đông, du khách
+                sẽ có cơ hội thỏa thích vui chơi ở những địa điểm du lịch hấp
+                dẫn và thưởng thức vô vàn những món ăn ngon, mang hương vị đặc
+                trưng của vùng biển đảo.
+              </div>
+              <div class="content">
+                <h4>1.1. Bãi Ông Lang – bỏ lại sau lưng mọi phiền muộn</h4>
+                <p>
+                  Cách trung tâm thành phố chỉ khoảng 6km, bãi Ông Lang Phú
+                  Quốc khiến du khách mê đắm bởi không gian yên bình có hàng cây
+                  xanh xào xạc, nước biển trong xanh và nắng vàng dịu nhẹ.
+                  Đến Dương Đông Phú Quốc ghé thăm bãi Ông Lang, du khách có thể
+                  tham gia nhiều trải nghiệm thú vị như tắm biển, lặn biển, bắt
+                  cá, chụp hình sống ảo, ngắm cảnh, tắm nắng,….
+                </p>
+                <h4>1.1. Bãi Ông Lang – bỏ lại sau lưng mọi phiền muộn</h4>
+                <p>
+                  Cách trung tâm thành phố chỉ khoảng 6km, bãi Ông Lang Phú
+                  Quốc khiến du khách mê đắm bởi không gian yên bình có hàng cây
+                  xanh xào xạc, nước biển trong xanh và nắng vàng dịu nhẹ.
+                  Đến Dương Đông Phú Quốc ghé thăm bãi Ông Lang, du khách có thể
+                  tham gia nhiều trải nghiệm thú vị như tắm biển, lặn biển, bắt
+                  cá, chụp hình sống ảo, ngắm cảnh, tắm nắng,….
+                </p>
+                <h4>1.1. Bãi Ông Lang – bỏ lại sau lưng mọi phiền muộn</h4>
+                <p>
+                  Cách trung tâm thành phố chỉ khoảng 6km, bãi Ông Lang Phú
+                  Quốc khiến du khách mê đắm bởi không gian yên bình có hàng cây
+                  xanh xào xạc, nước biển trong xanh và nắng vàng dịu nhẹ.
+                  Đến Dương Đông Phú Quốc ghé thăm bãi Ông Lang, du khách có thể
+                  tham gia nhiều trải nghiệm thú vị như tắm biển, lặn biển, bắt
+                  cá, chụp hình sống ảo, ngắm cảnh, tắm nắng,….
+                </p>
+                <h4>1.1. Bãi Ông Lang – bỏ lại sau lưng mọi phiền muộn</h4>
+                <p>
+                  Cách trung tâm thành phố chỉ khoảng 6km, bãi Ông Lang Phú
+                  Quốc khiến du khách mê đắm bởi không gian yên bình có hàng cây
+                  xanh xào xạc, nước biển trong xanh và nắng vàng dịu nhẹ.
+                  Đến Dương Đông Phú Quốc ghé thăm bãi Ông Lang, du khách có thể
+                  tham gia nhiều trải nghiệm thú vị như tắm biển, lặn biển, bắt
+                  cá, chụp hình sống ảo, ngắm cảnh, tắm nắng,….
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12 col-media">
+              <div class="swiper swiper-facility">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="box-img">
+                      <img src="./assets/images/fac.png" alt="" />
+                    </div>
+                    <div class="caption b2-font color-primary">
+                      Ngắm nhìn hoàng hôn tuyệt đẹp tại bãi Ông Lang (Ảnh: Sưu
+                      tầm)
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="box-img">
+                      <img src="./assets/images/fac.png" alt="" />
+                    </div>
+                    <div class="caption b2-font color-primary">
+                      Ngắm nhìn hoàng hôn tuyệt đẹp tại bãi Ông Lang (Ảnh: Sưu
+                      tầm 2)
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="spacing-12x"></div>
+      <div class="separate-line"></div>
+      <div class="spacing-80"></div>
+      <section class="accommodation">
+        <div class="accommodation-content">
+          <div class="box-global">
+            <div class="box-title">
+              <h1 class="h0-font color-primary font-heading text-uppercase">
+                Khám phá
+              </h1>
+              <div class="tag font-tag color-blue-cyan f48-1">
+                Explore Phu Quoc
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accommodation-slider">
+          <div class="swiper accommodation-slider__main offer-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="#" class="item-wrapper">
+                  <div class="item-image distortion-img">
+                    <img
+                      src="./assets/images/offer/offer-1.jpg"
+                      style="display: block"
+                      alt=""
+                    />
+                  </div>
+                  <div class="item-content">
+                    <div class="title h1-font color-primary">Dining Offer</div>
+                    <div class="desc b1-font color-primary">
+                      Our entry level villa boasts the elegant and chic designs
+                      you’d expect from Fusion, with an open-plan
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="item-wrapper">
+                  <div class="item-image distortion-img">
+                    <img src="./assets/images/offer/offer-1.jpg" alt="" />
+                  </div>
+                  <div class="item-content">
+                    <div class="title h1-font color-primary">Dining Offer</div>
+                    <div class="desc b1-font color-primary">
+                      Our entry level villa boasts the elegant and chic designs
+                      you’d expect from Fusion, with an open-plan
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="item-wrapper">
+                  <div class="item-image distortion-img">
+                    <img src="./assets/images/offer/offer-1.jpg" alt="" />
+                  </div>
+                  <div class="item-content">
+                    <div class="title h1-font color-primary">Dining Offer</div>
+                    <div class="desc b1-font color-primary">
+                      Our entry level villa boasts the elegant and chic designs
+                      you’d expect from Fusion, with an open-plan
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="item-wrapper">
+                  <div class="item-image distortion-img">
+                    <img src="./assets/images/offer/offer-1.jpg" alt="" />
+                  </div>
+                  <div class="item-content">
+                    <div class="title h1-font color-primary">Dining Offer</div>
+                    <div class="desc b1-font color-primary">
+                      Our entry level villa boasts the elegant and chic designs
+                      you’d expect from Fusion, with an open-plan
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-operation">
+            <div class="swiper-arrows">
+              <div class="swiper-button-prev">
+                <svg
+                  width="24"
+                  height="8"
+                  viewBox="0 0 24 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 4L22 4"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M19 7.5L23 4L19 0.5"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div class="swiper-button-next">
+                <svg
+                  width="24"
+                  height="8"
+                  viewBox="0 0 24 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 4L22 4"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M19 7.5L23 4L19 0.5"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+      <div class="spacing-14x"></div>
+    </main>
+    <!-- layout -->
+    <script>
+      fetch("./components/cta-mess.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("cta-mess").innerHTML = data;
+        });
+    </script>
+    <div id="cta-mess"></div>
+    <!-- footer -->
+    <script>
+      fetch("./components/footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+    <footer id="footer"></footer>
+    <!-- end footer -->
+    <!-- end layout -->
+
+    <script src="./assets/libs/jquery-3.7.1.js"></script>
+    <script src="./assets/libs/lenis.min.js"></script>
+    <script src="./assets/libs/gsap.min.js"></script>
+    <script src="./assets/libs/ScrollTrigger.min.js"></script>
+    <script src="./assets/libs/SplitText.min.js"></script>
+    <script src="./assets/libs/bootstrap.bundle.min.js"></script>
+    <script src="./assets/libs/imagesloaded.pkgd.min.js"></script>
+    <script src="./assets/libs/swiper-bundle.min.js"></script>
+    <script src="./assets/libs/moment.min.js"></script>
+    <script src="./assets/libs/lightpick.min.js"></script>
+    <script src="./assets/libs/hover.js"></script>
+    <script src="./assets/libs/three.js"></script>
+    <!-- import custom js -->
+    <script type="module" src="./assets/main/js/script.min.js"></script>
+
+    <!-- end import custom js -->
+  </body>
+</html>
+<!-- https://gsap.com/community/forums/topic/30338-circular-carouselslider/ -->

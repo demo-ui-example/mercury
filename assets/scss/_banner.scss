@@ -1,0 +1,306 @@
+.banner {
+  overflow: hidden;
+
+  &:not(.has-booking-form) {
+    .banner-container {
+      @media (max-width: 991px) {
+        max-height: 640px;
+      }
+
+      @media (max-width: 767px) {
+        max-height: 640px;
+      }
+    }
+  }
+
+  &-hero-clip {
+    background-image: url("../../images/banner-2.jpg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    .banner-container {
+      &::before {
+        content: unset;
+      }
+    }
+  }
+  &.option-left {
+    .banner-title {
+      bottom: 80px;
+      left: 80px;
+      transform: translateX(0);
+      max-width: calc(6 / 12 * 100%);
+      width: 100%;
+      top: unset;
+      text-align: left;
+      @media (max-width: 991px) {
+        font-size: 28px;
+        line-height: 32px;
+        bottom: 40px;
+        max-width: calc(100% - 100px);
+        left: 50px;
+        right: 50px;
+        text-align: center;
+      }
+    }
+  }
+  &-container {
+    width: 100%;
+    height: 100svh;
+    position: relative;
+
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   background: linear-gradient(
+    //     to bottom,
+    //     transparent,
+    //     rgba(0, 0, 0, 1) 75%,
+    //     transparent
+    //   );
+    //   opacity: 0.6;
+    //   z-index: 3;
+    //   pointer-events: none;
+    // }
+    picture {
+      width: 100%;
+      height: 100%;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &-booking {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 70px;
+    max-width: 845px;
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+    background-color: var(--color-secondary);
+    z-index: 3;
+    display: flex;
+    overflow: hidden;
+    form {
+      display: flex;
+      > * {
+        color: var(--color-primary);
+      }
+      .people,
+      .child {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        padding-left: 35px;
+        .select {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+      }
+      .child {
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 13px;
+          background-color: var(--color-primary);
+        }
+      }
+      button {
+        background-color: var(--color-primary);
+        width: 150px;
+        margin-left: 26px;
+        color: var(--color-secondary);
+        border-radius: 0 4px 4px 0;
+        border: none;
+      }
+      .check-in,
+      .check-out {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 13px;
+          background-color: var(--color-primary);
+        }
+      }
+      input {
+        border: none;
+        box-shadow: none;
+        outline: none;
+        text-align: center;
+        color: var(--color-primary);
+        font-size: 16px;
+        line-height: 24px;
+        &::placeholder {
+          color: var(--color-primary);
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+  &-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    max-width: calc(10 / 12 * 100%);
+    width: 100%;
+    text-align: center;
+  }
+}
+.banner-hero-clip {
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-color: rgba(0, 0, 0, 0.6);
+  //   z-index: 3;
+  // }
+  .banner-title {
+    z-index: 5;
+    h4 {
+      font-size: 48px;
+
+      @media (max-width: 991px) {
+        font-size: 24px;
+      }
+    }
+    h1 {
+      font-size: 80px;
+
+      @media (max-width: 991px) {
+        font-size: 36px;
+      }
+    }
+  }
+}
+.anim-clip-circle {
+  clip-path: circle(0% at 50% 50%);
+  // transform: scale(1.7);
+}
+.banner-booking-mobile {
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: 48px;
+  height: calc(100svh - 48px);
+  background-color: var(--color-secondary);
+  display: flex;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  will-change: clip-path;
+  transition: all 0.3s ease;
+  clip-path: inset(100% 0 0 0);
+  &.active {
+    clip-path: inset(0 0 0 0);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    .btn-back {
+      padding: 48px 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .form-wrapper {
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--color-primary);
+        font-size: 16px;
+        line-height: 24px;
+        color: var(--color-primary);
+        &::placeholder {
+          font-size: 16px;
+          line-height: 24px;
+          color: var(--color-primary);
+        }
+      }
+      .select {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        justify-content: flex-end;
+      }
+      .people,
+      .child {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+      .select .min,
+      .select .plus {
+        width: 32px;
+        height: 32px;
+        border-radius: 2px;
+        border: 1px solid var(--color-primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+.button-find-room {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 21;
+  width: 100%;
+  display: none;
+  @media (max-width: 991px) {
+    display: block;
+  }
+  &.hide {
+    pointer-events: none;
+  }
+  button {
+    width: 100%;
+    border-radius: 0;
+  }
+}
