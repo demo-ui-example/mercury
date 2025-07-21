@@ -92,7 +92,9 @@
     transition: opacity 0.4s ease;
     opacity: 1;
     pointer-events: auto;
-
+    @media (max-width: 991px) {
+      display: none;
+    }
     &.hide {
       opacity: 0;
       pointer-events: none;

@@ -181,7 +181,17 @@
     }
   }
 }
-
+.box-global {
+  &.one-line {
+    .tag {
+      right: 0;
+      transform: translateX(50%) rotate(-9deg);
+      @media (max-width: 991px) {
+        transform: translateX(0%) rotate(-9deg);
+      }
+    }
+  }
+}
 .btn-general {
   gap: 16px;
   position: relative;
