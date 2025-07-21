@@ -5,10 +5,10 @@
   left: 0;
   width: 100%;
   z-index: 99;
-  transform: all 0.5s;
+  transition: all 0.5s;
   &.hide-header {
     transform: translateY(-100%);
-    transform: all 0.5s;
+    transition: all 0.5s;
   }
 }
 .header {

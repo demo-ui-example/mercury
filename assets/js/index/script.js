@@ -101,7 +101,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    }
+    },
   });
 
   // Counter functionality
@@ -147,12 +147,12 @@ function sectionAccommodation() {
       slidesOffsetAfter: 80,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
   });
 }
@@ -193,7 +193,7 @@ function swiperFacility() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000
+        delay: 3000,
       },
       pagination: {
         el: el.querySelector(".swiper-pagination"),
@@ -203,7 +203,7 @@ function swiperFacility() {
             <button class="${className}">
               <span class="progress-bar"></span>
             </button>`;
-        }
+        },
       },
       on: {
         init(swiper) {
@@ -279,8 +279,8 @@ function swiperFacility() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        }
-      }
+        },
+      },
     });
   });
 }
@@ -316,12 +316,12 @@ function swiperAccommodation() {
       parallax: true,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
 
     // Handle modal gallery slider
@@ -353,17 +353,17 @@ function swiperAccommodation() {
         // centeredSlides: true,
         pagination: {
           el: $paginationG[0],
-          type: "progressbar"
+          type: "progressbar",
         },
         navigation: {
           prevEl: $prevG[0],
-          nextEl: $nextG[0]
+          nextEl: $nextG[0],
         },
         breakpoints: {
           991: {
             spaceBetween: 40,
-            slidesPerView: "auto"
-          }
+            slidesPerView: "auto",
+          },
         },
         on: {
           slideChange: function () {
@@ -375,8 +375,8 @@ function swiperAccommodation() {
           init: function () {
             // Reveal Swiper after initialization
             $gallery.removeClass("swiper-hidden").addClass("swiper-visible");
-          }
-        }
+          },
+        },
       });
     }
   });
@@ -391,7 +391,7 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
-    }
+    },
   });
 }
 function distortionImg() {
@@ -409,13 +409,13 @@ function distortionImg() {
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: "./assets/images/distortion/ripple.jpg"
+        displacementImage: "./assets/images/distortion/ripple.jpg",
       });
     }
   });
 }
 function loadingBanner() {
-  let classesRemoved = false; // Biến để đảm bảo class chỉ xóa một lần
+  let classesRemoved = false;
   if ($(".banner-hero-clip").length < 1) return;
 
   const tl = gsap.timeline({
@@ -424,53 +424,55 @@ function loadingBanner() {
       start: "top top",
       scrub: true,
       pin: true,
-      // markers: true,
       once: true,
+
       onUpdate: (self) => {
         if (self.progress === 1 && !classesRemoved) {
           document
             .querySelector(".banner-hero-clip")
             ?.classList.remove("banner-hero-clip");
-          document.querySelectorAll(".anim-clip-circle").forEach((el) => {
-            el.classList.remove("anim-clip-circle");
-          });
+          document
+            .querySelectorAll(".anim-clip-circle")
+            .forEach((el) => el.classList.remove("anim-clip-circle"));
           document.querySelector(".banner-title").classList.add("d-none");
           document.getElementById("header").classList.remove("hide-header");
           classesRemoved = true;
+          ScrollTrigger.refresh();
+
+          lenis.scrollTo(0, { immediate: true });
         }
       },
+
       onLeave: (self) => {
-        if ($("#cta-mess").length) {
-          $("#cta-mess").removeClass("hide");
-        }
-
-        if ($(".banner-booking").length) {
+        // Hiển thị các phần UI (nếu có)
+        if ($("#cta-mess").length) $("#cta-mess").removeClass("hide");
+        if ($(".banner-booking").length)
           $(".banner-booking").removeClass("hide");
-        }
 
-        let start = self.start;
+        // Reset scroll trigger và cuộn về vị trí bắt đầu (top trang)
+        const start = self.start;
 
-        self.scroll(self.start);
-        self.disable();
+        self.scroll(self.start); // Thiết lập scroll trigger về vị trí bắt đầu
+        self.disable(); // Tắt trigger animation để không chạy lại
+        self.animation.progress(1); // Đảm bảo animation chạy đến cuối
+        ScrollTrigger.refresh(); // Update lại ScrollTrigger
 
-        // add true
-        self.animation.progress(1, true);
-        ScrollTrigger.refresh();
-        window.scrollTo(0, start);
-      }
-    }
+        window.scrollTo({ top: 0, behavior: "smooth" }); // Cuộn về đầu trang
+      },
+    },
   });
 
   tl.to(".anim-clip-circle", {
-    clipPath: "circle(70.7% at 50% 50%)"
+    clipPath: "circle(70.7% at 50% 50%)",
   }).to(
     ".banner-container img",
     {
-      scale: 1
+      scale: 1,
     },
     0
   );
 }
+
 function filterGalleryMobile() {
   const filterContainer = document.querySelector(".filter-mobile");
   if (!filterContainer) return;
