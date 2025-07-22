@@ -139,9 +139,10 @@ function sectionAccommodation() {
     const isOffer = $slider.hasClass("offer-slider");
 
     let slidePerView = $(window).width() > 767 ? (isOffer ? 2.5 : 3.3) : 1.2;
+    let spaceBetween = $(window).width() > 767 ? 40 : 24;
 
     new Swiper($slider[0], {
-      spaceBetween: 40,
+      spaceBetween: spaceBetween,
       slidesPerView: slidePerView,
       speed: 1000,
       slidesOffsetAfter: 80,
@@ -521,6 +522,8 @@ function header() {
 }
 
 function magicCursor() {
+  if (window.innerWidth < 992 || typeof MouseFollower === "undefined") return;
+
   var cursor = new MouseFollower({
     speed: 0.8,
     skewing: 1,
