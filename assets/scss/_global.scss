@@ -669,3 +669,9 @@
   -webkit-backdrop-filter: blur(10px);
   /* for Safari */
 }
+.distortion-img-nav img {
+  transition: opacity 0.3s;
+}
+.distortion-img-nav.effect-ready img {
+  opacity: 0; /* Ẩn ảnh gốc sau khi hiệu ứng sẵn sàng */
+}

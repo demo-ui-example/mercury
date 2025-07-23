@@ -101,7 +101,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    }
+    },
   });
 
   // Counter functionality
@@ -148,12 +148,12 @@ function sectionAccommodation() {
       slidesOffsetAfter: 80,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
   });
 }
@@ -194,7 +194,7 @@ function swiperFacility() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000
+        delay: 3000,
       },
       pagination: {
         el: el.querySelector(".swiper-pagination"),
@@ -204,7 +204,7 @@ function swiperFacility() {
             <button class="${className}">
               <span class="progress-bar"></span>
             </button>`;
-        }
+        },
       },
       on: {
         init(swiper) {
@@ -280,8 +280,8 @@ function swiperFacility() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        }
-      }
+        },
+      },
     });
   });
 }
@@ -317,12 +317,12 @@ function swiperAccommodation() {
       parallax: true,
       pagination: {
         el: $pagination[0],
-        type: "progressbar"
+        type: "progressbar",
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0]
-      }
+        nextEl: $next[0],
+      },
     });
 
     // Handle modal gallery slider
@@ -354,17 +354,17 @@ function swiperAccommodation() {
         // centeredSlides: true,
         pagination: {
           el: $paginationG[0],
-          type: "progressbar"
+          type: "progressbar",
         },
         navigation: {
           prevEl: $prevG[0],
-          nextEl: $nextG[0]
+          nextEl: $nextG[0],
         },
         breakpoints: {
           991: {
             spaceBetween: 40,
-            slidesPerView: "auto"
-          }
+            slidesPerView: "auto",
+          },
         },
         on: {
           slideChange: function () {
@@ -376,8 +376,8 @@ function swiperAccommodation() {
           init: function () {
             // Reveal Swiper after initialization
             $gallery.removeClass("swiper-hidden").addClass("swiper-visible");
-          }
-        }
+          },
+        },
       });
     }
   });
@@ -392,7 +392,7 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
-    }
+    },
   });
 }
 function distortionImg() {
@@ -410,7 +410,7 @@ function distortionImg() {
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: "./assets/images/distortion/ripple.jpg"
+        displacementImage: "./assets/images/distortion/ripple.jpg",
       });
     }
   });
@@ -459,16 +459,16 @@ function loadingBanner() {
         ScrollTrigger.refresh(); // Update lại ScrollTrigger
 
         window.scrollTo({ top: 0, behavior: "smooth" }); // Cuộn về đầu trang
-      }
-    }
+      },
+    },
   });
 
   tl.to(".anim-clip-circle", {
-    clipPath: "circle(70.7% at 50% 50%)"
+    clipPath: "circle(70.7% at 50% 50%)",
   }).to(
     ".banner-container img",
     {
-      scale: 1
+      scale: 1,
     },
     0
   );
@@ -527,7 +527,7 @@ function magicCursor() {
   var cursor = new MouseFollower({
     speed: 0.8,
     skewing: 1,
-    skewingText: 3
+    skewingText: 3,
   });
 
   const element = document.querySelectorAll("[data-cursor]");
@@ -545,6 +545,58 @@ function magicCursor() {
     });
   });
 }
+function distortionImgNav() {
+  function initializeDistortion(tabPane) {
+    tabPane.querySelectorAll(".distortion-img-nav").forEach((wrapper) => {
+      const imgElement = wrapper.querySelector("img");
+
+      if (imgElement) {
+        const imageSrc = imgElement.src;
+
+        // Ẩn ảnh gốc
+        imgElement.style.display = "none";
+
+        // Xóa hiệu ứng cũ (nếu có)
+        let effectInstance = wrapper.__hoverEffect;
+        if (effectInstance && typeof effectInstance.destroy === "function") {
+          effectInstance.destroy(); // Giải phóng tài nguyên WebGL
+        }
+        wrapper.innerHTML = ""; // Xóa nội dung cũ
+        wrapper.appendChild(imgElement); // Thêm lại ảnh gốc
+
+        // Khởi tạo mới hoverEffect và lưu instance
+        effectInstance = new hoverEffect({
+          parent: wrapper,
+          intensity: 0.1,
+          angle: 0,
+          image1: imageSrc,
+          image2: imageSrc,
+          displacementImage: "./assets/images/distortion/ripple.jpg",
+        });
+        wrapper.__hoverEffect = effectInstance;
+      }
+    });
+  }
+
+  // Khởi tạo cho tab active ban đầu
+  const activeTabPane = document.querySelector(".tab-pane.active");
+  if (activeTabPane) {
+    initializeDistortion(activeTabPane);
+  }
+
+  // Lắng nghe sự kiện khi tab được hiển thị
+  document.querySelectorAll('[data-bs-toggle="tab"]').forEach((tab) => {
+    tab.addEventListener("shown.bs.tab", (event) => {
+      const targetPaneId = event.target.getAttribute("data-bs-target");
+      const targetPane = document.querySelector(targetPaneId);
+      if (targetPane) {
+        initializeDistortion(targetPane);
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", distortionImgNav);
 
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
