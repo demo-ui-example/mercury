@@ -79,6 +79,10 @@
       will-change: clip-path;
       transition: all 0.4s;
       max-height: 0;
+      position: absolute;
+      width: 100%;
+      top: 100%;
+      left: 0;
       &.active {
         max-height: 300px;
         clip-path: inset(0% 0% 0% 0%);
@@ -98,6 +102,10 @@
     .filter-value-select {
       padding: 4px 0;
       text-align: center;
+
+      @media (max-width: 991px) {
+        padding: 12px 0 4px;
+      }
     }
     .tab-content {
       @media (max-width: 991px) {

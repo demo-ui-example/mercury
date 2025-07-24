@@ -92,6 +92,10 @@
     &-gallery {
       margin-top: 64px;
 
+      @media (max-width: 991px) {
+        margin-top: 32px;
+      }
+
       .swiper {
         padding-left: 80px;
         padding-right: 80px;
@@ -190,7 +194,7 @@
         z-index: 2;
         box-shadow: none;
         @media (max-width: 991px) {
-          top: 64px;
+          top: 100px;
           right: 24px;
         }
 
@@ -251,6 +255,19 @@
         transform: none;
         display: block;
 
+        @media (max-width: 991px) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+        }
+
+        .swiper-operation {
+          @media (max-width: 991px) {
+            width: 100%;
+          }
+        }
+
         .swiper {
           padding-left: 80px;
           padding-right: 80px;
@@ -263,7 +280,9 @@
           @media (max-width: 991px) {
             padding-left: 24px;
             padding-right: 24px;
+            height: max-content;
           }
+
           .swiper-slide {
             width: 60% !important;
             height: auto;
