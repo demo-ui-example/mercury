@@ -139,9 +139,10 @@ function sectionAccommodation() {
     const isOffer = $slider.hasClass("offer-slider");
 
     let slidePerView = $(window).width() > 767 ? (isOffer ? 2.5 : 3.3) : 1.2;
+    let spaceBetween = $(window).width() > 767 ? 40 : 24;
 
     new Swiper($slider[0], {
-      spaceBetween: 40,
+      spaceBetween: spaceBetween,
       slidesPerView: slidePerView,
       speed: 1000,
       slidesOffsetAfter: 80,
@@ -519,6 +520,84 @@ function header() {
     subMenu.classList.toggle("active");
   });
 }
+
+function magicCursor() {
+  if (window.innerWidth < 992 || typeof MouseFollower === "undefined") return;
+
+  var cursor = new MouseFollower({
+    speed: 0.8,
+    skewing: 1,
+    skewingText: 3,
+  });
+
+  const element = document.querySelectorAll("[data-cursor]");
+  element.forEach(function (el) {
+    const cursorText = el.getAttribute("data-cursor-text")
+      ? el.getAttribute("data-cursor-text")
+      : "VIEW";
+
+    el.addEventListener("mouseenter", () => {
+      cursor.setText(cursorText);
+    });
+
+    el.addEventListener("mouseleave", () => {
+      cursor.removeText();
+    });
+  });
+}
+function distortionImgNav() {
+  function initializeDistortion(tabPane) {
+    tabPane.querySelectorAll(".distortion-img-nav").forEach((wrapper) => {
+      const imgElement = wrapper.querySelector("img");
+
+      if (imgElement) {
+        const imageSrc = imgElement.src;
+
+        // Ẩn ảnh gốc
+        imgElement.style.display = "none";
+
+        // Xóa hiệu ứng cũ (nếu có)
+        let effectInstance = wrapper.__hoverEffect;
+        if (effectInstance && typeof effectInstance.destroy === "function") {
+          effectInstance.destroy(); // Giải phóng tài nguyên WebGL
+        }
+        wrapper.innerHTML = ""; // Xóa nội dung cũ
+        wrapper.appendChild(imgElement); // Thêm lại ảnh gốc
+
+        // Khởi tạo mới hoverEffect và lưu instance
+        effectInstance = new hoverEffect({
+          parent: wrapper,
+          intensity: 0.1,
+          angle: 0,
+          image1: imageSrc,
+          image2: imageSrc,
+          displacementImage: "./assets/images/distortion/ripple.jpg",
+        });
+        wrapper.__hoverEffect = effectInstance;
+      }
+    });
+  }
+
+  // Khởi tạo cho tab active ban đầu
+  const activeTabPane = document.querySelector(".tab-pane.active");
+  if (activeTabPane) {
+    initializeDistortion(activeTabPane);
+  }
+
+  // Lắng nghe sự kiện khi tab được hiển thị
+  document.querySelectorAll('[data-bs-toggle="tab"]').forEach((tab) => {
+    tab.addEventListener("shown.bs.tab", (event) => {
+      const targetPaneId = event.target.getAttribute("data-bs-target");
+      const targetPane = document.querySelector(targetPaneId);
+      if (targetPane) {
+        initializeDistortion(targetPane);
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", distortionImgNav);
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -531,6 +610,7 @@ const init = () => {
   loadingBanner();
   filterGalleryMobile();
   header();
+  magicCursor();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

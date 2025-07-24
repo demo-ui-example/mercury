@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./assets/libs/lenis.css" />
     <link rel="stylesheet" href="./assets/libs/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./assets/libs/lightpick.min.css" />
+    <link rel="stylesheet" href="./assets/libs/mouse-follower.min.css" />
     <!-- end meta -->
     <!-- link custom css page -->
     <link rel="stylesheet" href="./assets/fonts/Futura/font.css" />
@@ -78,7 +79,7 @@
         </button>
       </form>
     </div>
-    <div class="button-find-room">
+    <div class="button-find-room d-none">
       <button class="b2-font color-white text-uppercase global-button">
         tìm phòng
       </button>
@@ -119,7 +120,7 @@
           <h4>Hành Trình Khám Phá</h4>
           <h1>Đảo Ngọc Phú Quốc</h1>
         </div>
-        <div class="banner-booking hide">
+        <div class="banner-booking hide d-none d-lg-block">
           <form action="">
             <div class="check-in">
               <input
@@ -233,7 +234,7 @@
           <div class="swiper accommodation-slider__main">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <a href="#" class="item-wrapper accommodation-card">
+                <a href="#" class="item-wrapper accommodation-card" data-cursor>
                   <div class="item-image distortion-img">
                     <img
                       src="./assets/images/accommodation/accommodation-1.jpg"
@@ -253,7 +254,7 @@
                 </a>
               </div>
               <div class="swiper-slide">
-                <a href="#" class="item-wrapper accommodation-card">
+                <a href="#" class="item-wrapper accommodation-card" data-cursor>
                   <div class="item-image distortion-img">
                     <img
                       src="./assets/images/accommodation/accommodation-1.jpg"
@@ -273,7 +274,7 @@
                 </a>
               </div>
               <div class="swiper-slide">
-                <a href="#" class="item-wrapper accommodation-card">
+                <a href="#" class="item-wrapper accommodation-card" data-cursor>
                   <div class="item-image distortion-img">
                     <img
                       src="./assets/images/accommodation/accommodation-1.jpg"
@@ -293,7 +294,7 @@
                 </a>
               </div>
               <div class="swiper-slide">
-                <a href="#" class="item-wrapper accommodation-card">
+                <a href="#" class="item-wrapper accommodation-card" data-cursor>
                   <div class="item-image distortion-img">
                     <img
                       src="./assets/images/accommodation/accommodation-1.jpg"
@@ -831,6 +832,7 @@
     <script src="./assets/libs/lightpick.min.js"></script>
     <script src="./assets/libs/hover.js"></script>
     <script src="./assets/libs/three.js"></script>
+    <script src="./assets/libs/mouse-follower.min.js"></script>
     <!-- import custom js -->
     <script type="module" src="./assets/main/js/script.min.js"></script>
 

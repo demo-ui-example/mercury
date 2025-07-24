@@ -659,3 +659,29 @@
     max-width: 75%;
   }
 }
+
+// magic cursor
+.mf-cursor-text {
+  font-weight: 400;
+  color: var(--color-secondary);
+  letter-spacing: 0.04em;
+  font-size: 0.8em;
+}
+
+.mf-cursor.-text:before {
+  opacity: 1;
+}
+
+.mf-cursor:before {
+  background: var(--color-primary);
+  --mix-blend-mode: difference;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* for Safari */
+}
+.distortion-img-nav img {
+  transition: opacity 0.3s;
+}
+.distortion-img-nav.effect-ready img {
+  opacity: 0; /* Ẩn ảnh gốc sau khi hiệu ứng sẵn sàng */
+}

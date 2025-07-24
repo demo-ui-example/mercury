@@ -41,6 +41,12 @@
       gap: 48px;
     }
     &-col {
+      &:nth-child(2) {
+        @media (max-width: 991px) {
+          display: none;
+        }
+      }
+
       ul {
         li {
           a {
