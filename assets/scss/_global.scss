@@ -285,29 +285,34 @@
     &-bullet {
       width: 48px;
 
-      border-radius: 0;
+      border-radius: 2px;
       height: 2px;
       background-color: rgba(255, 255, 255, 0.6);
       opacity: 1;
+
       &.viewed {
         opacity: 1;
         .progress-bar {
           background: var(--color-secondary);
           width: 100%;
+          border-radius: 2px;
         }
       }
       &.swiper-pagination-bullet-active {
         background-color: rgba(255, 255, 255, 1);
         opacity: 1;
+        border-radius: 2px;
       }
       .progress-bar {
         height: 2px;
+        border-radius: 2px;
       }
     }
     .progress-bar {
       background: var(--color-secondary);
       width: 0;
       height: 2px;
+      border-radius: 2px;
     }
   }
 }

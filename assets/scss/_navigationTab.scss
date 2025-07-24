@@ -151,4 +151,12 @@
     z-index: 2;
     background-color: var(--color-white);
   }
+  .filter-mobile {
+    @media (max-width: 991px) {
+      position: sticky;
+      top: 48px;
+      z-index: 2;
+      background-color: var(--color-white);
+    }
+  }
 }
