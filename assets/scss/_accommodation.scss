@@ -13,7 +13,7 @@
     margin-bottom: 140px;
     @media (max-width: 991px) {
       padding: 0 24px;
-      margin-bottom: 40px;
+      margin-bottom: 64px;
     }
     .box {
       &-global {
@@ -107,6 +107,10 @@
           .desc {
             max-width: 80%;
             margin-top: 16px;
+
+            @media (max-width: 991px) {
+              max-width: 100%;
+            }
           }
         }
       }
