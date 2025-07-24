@@ -447,7 +447,8 @@ function loadingBanner() {
 
       onLeave: (self) => {
         // Hiển thị các phần UI (nếu có)
-        if ($("#cta-mess").length) $("#cta-mess").removeClass("hide");
+        if ($("#cta-mess").length)
+          $("#cta-mess").removeClass("hide hide-by-loading");
         if ($(".banner-booking").length)
           $(".banner-booking").removeClass("hide");
 
@@ -601,6 +602,117 @@ function distortionImgNav() {
 
 document.addEventListener("DOMContentLoaded", distortionImgNav);
 
+function bookingOffer() {
+  const form = $("form.booking-offer");
+  if (!form.length) return;
+
+  const dateField = form.find("input[name='startday']")[0];
+  const dateEndField = form.find("input[name='endday']")[0];
+
+  // Khởi tạo Lightpick
+  if (dateField && dateEndField) {
+    new Lightpick({
+      field: dateField,
+      secondField: dateEndField,
+      singleDate: false,
+      numberOfMonths: 1,
+      format: "DD/MM/YYYY",
+      minDate: moment(),
+      onSelect: function (start, end) {
+        try {
+          if (!start || !end) return;
+
+          dateField.value = start.format("DD/MM/YYYY");
+          dateEndField.value = end.format("DD/MM/YYYY");
+
+          [dateField, dateEndField].forEach((el) =>
+            el.classList.remove("error")
+          );
+        } catch (error) {
+          console.error("Lỗi trong Lightpick onSelect:", error);
+        }
+      }
+    });
+  }
+
+  // Submit form
+  form.on("submit", function (e) {
+    e.preventDefault();
+
+    const fields = {
+      startday: form.find("input[name='startday']"),
+      endday: form.find("input[name='endday']"),
+      adult: form.find("input[name='adult']"),
+      name: form.find("input[name='name']"),
+      phone: form.find("input[name='phone']"),
+      email: form.find("input[name='email']")
+    };
+
+    // Reset lỗi
+    form.find(".error-message").remove();
+    form.find("input").removeClass("error");
+
+    let isValid = true;
+
+    // Validate từng field
+    $.each(fields, (key, field) => {
+      if (!field.val().trim()) {
+        field.addClass("error");
+        isValid = false;
+      }
+    });
+
+    if (!isValid) return;
+
+    // Gửi dữ liệu qua AJAX
+    $.ajax({
+      type: "POST",
+      url: ajaxUrl, // ← biến global từ theme hoặc page
+      data: {
+        action: "submit_contact_form",
+        startday: fields.startday.val().trim(),
+        endday: fields.endday.val().trim(),
+        adult: fields.adult.val().trim(),
+        name: fields.name.val().trim(),
+        phone: fields.phone.val().trim(),
+        email: fields.email.val().trim()
+      },
+      beforeSend: function () {
+        $(".contact-message").remove();
+        console.log("Đang gửi dữ liệu...");
+      },
+      success: function (res) {
+        console.log("Phản hồi từ server:", res);
+
+        let message = "";
+        if (res.success === true) {
+          message = `<span class="contact-message" style="color: green;">${res.data}</span>`;
+          form.append(message);
+          form[0].reset();
+
+          setTimeout(function () {
+            $(".contact-message").fadeOut("slow", function () {
+              $(this).remove();
+            });
+          }, 5000);
+        } else {
+          message = `<span class="contact-message" style="color: red;">${
+            res.data || "Có lỗi xảy ra, vui lòng thử lại."
+          }</span>`;
+          form.append(message);
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("Lỗi khi gửi form:", error);
+        $(".contact-message").remove();
+        form.append(
+          '<span class="contact-message" style="color: red;">Có lỗi xảy ra, vui lòng thử lại sau.</span>'
+        );
+      }
+    });
+  });
+}
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -614,6 +726,7 @@ const init = () => {
   filterGalleryMobile();
   header();
   magicCursor();
+  bookingOffer();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

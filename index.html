@@ -496,7 +496,7 @@
         <div class="destination-map">
           <div class="map">
             <img
-              src="./assets/images/destination/map.jpg"
+              src="./assets/images/destination/map.png"
               alt=""
               class="d-none d-lg-block"
             />
@@ -799,6 +799,17 @@
       </section>
       <div class="spacing-14x"></div>
     </main>
+
+    <div
+      class="bg-main"
+      style="
+        background-color: #fff1e2;
+        background-image: url('./assets/images/use/bg-main.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      "
+    ></div>
     <!-- layout -->
     <script>
       fetch("./components/cta-mess.html")
@@ -807,7 +818,7 @@
           document.getElementById("cta-mess").innerHTML = data;
         });
     </script>
-    <div id="cta-mess" class="hide"></div>
+    <div id="cta-mess" class="hide hide-by-loading"></div>
     <!-- footer -->
     <script>
       fetch("./components/footer.html")

@@ -191,6 +191,10 @@
       }
     }
   }
+
+  .box-description {
+    text-align: justify;
+  }
 }
 .btn-general {
   gap: 16px;
@@ -323,10 +327,14 @@
   right: 40px;
   z-index: 19;
   transition: right 0.3s ease;
+  opacity: 1;
+  transform: translate(0);
+
   @media (max-width: 991px) {
     right: 24px;
     bottom: 110px;
   }
+
   &:hover {
     cursor: pointer;
   }
@@ -336,51 +344,57 @@
       opacity: 0;
     }
   }
-  .cta-mess__wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .cta-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 1px solid var(--color-white);
-
-    transition: background-color 0.3s ease, transform 0.5s ease,
-      opacity 0.4s ease;
-
-    path {
-      transition: all 0.3s ease;
+  &.hide-by-loading {
+    .cta-item {
+      transform: translateX(70%) !important;
+      opacity: 0 !important;
     }
+  }
+}
+.cta-mess__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cta-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--color-white);
 
-    &.mess {
-      background-color: var(--color-secondary);
-      &:hover {
-        background-color: var(--color-primary);
+  transition: background-color 0.3s ease, transform 0.5s ease, opacity 0.4s ease;
 
-        path {
-          stroke: var(--color-secondary);
-        }
+  path {
+    transition: all 0.3s ease;
+  }
+
+  &.mess {
+    background-color: var(--color-secondary);
+    &:hover {
+      background-color: var(--color-primary);
+
+      path {
+        stroke: var(--color-secondary);
       }
     }
-    &.phone {
-      background-color: var(--color-primary);
-      transition: background-color 0.3s ease, transform 0.7s ease,
-        opacity 0.4s ease;
-      &:hover {
-        background-color: var(--color-secondary);
+  }
+  &.phone {
+    background-color: var(--color-primary);
+    transition: background-color 0.3s ease, transform 0.7s ease,
+      opacity 0.4s ease;
+    &:hover {
+      background-color: var(--color-secondary);
 
-        path {
-          stroke: var(--color-primary);
-        }
+      path {
+        stroke: var(--color-primary);
       }
     }
   }
 }
+
 .group-mess {
   position: relative;
   &::before {
@@ -689,4 +703,13 @@
 }
 .distortion-img-nav.effect-ready img {
   opacity: 0; /* Ẩn ảnh gốc sau khi hiệu ứng sẵn sàng */
+}
+
+.bg-main {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
 }
