@@ -1,5 +1,5 @@
 .navigation-tab {
-  padding: 140px 80px;
+  padding: 140px 0;
   background-image: url("../../images/use/img-artwork-sec.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -9,6 +9,11 @@
   }
   &-top {
     margin-bottom: 190px;
+
+    @media (min-width: 992px) {
+      padding: 0 80px;
+    }
+
     @media (max-width: 991px) {
       margin-bottom: 100px;
       .box-global {
@@ -24,6 +29,9 @@
     }
   }
   &-bottom {
+    @media (min-width: 992px) {
+      padding: 0 80px;
+    }
     .nav {
       margin-bottom: 80px;
       border: none;
@@ -157,14 +165,19 @@
     position: sticky;
     top: 80px;
     z-index: 2;
-    background-color: var(--color-white);
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+
+    &.pinned {
+      background-color: var(--color-white);
+    }
   }
   .filter-mobile {
     @media (max-width: 991px) {
       position: sticky;
       top: 48px;
       z-index: 2;
-      background-color: var(--color-white);
+      background-color: transparent;
     }
   }
 }
