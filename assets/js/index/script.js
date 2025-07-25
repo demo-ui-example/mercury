@@ -713,6 +713,59 @@ function bookingOffer() {
   });
 }
 
+function animationText() {
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.utils.toArray(".effect-line").forEach((description) => {
+    const splitDescription = new SplitText(description, {
+      type: "lines",
+      linesClass: "line",
+      mask: "lines"
+    });
+
+    gsap.fromTo(
+      splitDescription.lines,
+      {
+        yPercent: 100,
+        willChange: "transform"
+      },
+      {
+        yPercent: 0,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.05,
+
+        scrollTrigger: {
+          trigger: description,
+          start: "top 60%"
+          // markers: true,
+        }
+      }
+    );
+  });
+
+  gsap.utils.toArray(".data-fade-in").forEach((element) => {
+    gsap.fromTo(
+      element,
+      {
+        "will-change": "opacity, transform",
+        opacity: 0,
+        y: 20
+      },
+      {
+        scrollTrigger: {
+          trigger: element,
+          start: "top 60%",
+          end: "bottom 60%"
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "sine.out"
+      }
+    );
+  });
+}
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -727,6 +780,7 @@ const init = () => {
   header();
   magicCursor();
   bookingOffer();
+  animationText();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
