@@ -101,7 +101,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    },
+    }
   });
 
   // Counter functionality
@@ -109,18 +109,33 @@ function bookingForm() {
     const minus = section.querySelector(".min");
     const plus = section.querySelector(".plus");
     const val = section.querySelector(".val");
+    const hiddenInput = section.querySelector("input[type='hidden']");
+
+    if (!minus || !plus || !val || !hiddenInput) return;
+
+    // Xác định min value theo loại section
+    const isPeople = section.classList.contains("people");
+    const minVal = isPeople ? 1 : 0;
+    const maxVal = 10;
+
+    const updateValue = (newVal) => {
+      val.textContent = newVal;
+      hiddenInput.value = newVal;
+      minus.style.opacity = newVal > minVal ? "1" : "0.5";
+    };
 
     plus.onclick = () => {
       const current = parseInt(val.textContent);
-      val.textContent = Math.min(current + 1, 10);
-      minus.style.opacity = val.textContent > 0 ? "1" : "0.5";
+      if (current < maxVal) {
+        updateValue(current + 1);
+      }
     };
 
     minus.onclick = () => {
       const current = parseInt(val.textContent);
-      const newVal = Math.max(current - 1, 0);
-      val.textContent = newVal;
-      minus.style.opacity = newVal > 0 ? "1" : "0.5";
+      if (current > minVal) {
+        updateValue(current - 1);
+      }
     };
   });
 }
@@ -149,12 +164,12 @@ function sectionAccommodation() {
       slidesOffsetAfter: spaceafter,
       pagination: {
         el: $pagination[0],
-        type: "progressbar",
+        type: "progressbar"
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0],
-      },
+        nextEl: $next[0]
+      }
     });
   });
 }
@@ -195,7 +210,7 @@ function swiperFacility() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000,
+        delay: 3000
       },
       pagination: {
         el: el.querySelector(".swiper-pagination"),
@@ -205,7 +220,7 @@ function swiperFacility() {
             <button class="${className}">
               <span class="progress-bar"></span>
             </button>`;
-        },
+        }
       },
       on: {
         init(swiper) {
@@ -281,8 +296,8 @@ function swiperFacility() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        },
-      },
+        }
+      }
     });
   });
 }
@@ -318,12 +333,12 @@ function swiperAccommodation() {
       parallax: true,
       pagination: {
         el: $pagination[0],
-        type: "progressbar",
+        type: "progressbar"
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0],
-      },
+        nextEl: $next[0]
+      }
     });
 
     // Handle modal gallery slider
@@ -355,17 +370,17 @@ function swiperAccommodation() {
         // centeredSlides: true,
         pagination: {
           el: $paginationG[0],
-          type: "progressbar",
+          type: "progressbar"
         },
         navigation: {
           prevEl: $prevG[0],
-          nextEl: $nextG[0],
+          nextEl: $nextG[0]
         },
         breakpoints: {
           991: {
             spaceBetween: 40,
-            slidesPerView: "auto",
-          },
+            slidesPerView: "auto"
+          }
         },
         on: {
           slideChange: function () {
@@ -377,8 +392,8 @@ function swiperAccommodation() {
           init: function () {
             // Reveal Swiper after initialization
             $gallery.removeClass("swiper-hidden").addClass("swiper-visible");
-          },
-        },
+          }
+        }
       });
     }
   });
@@ -393,7 +408,7 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
-    },
+    }
   });
 }
 function distortionImg() {
@@ -411,7 +426,7 @@ function distortionImg() {
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: "./assets/images/distortion/ripple.jpg",
+        displacementImage: "./assets/images/distortion/ripple.jpg"
       });
     }
   });
@@ -461,16 +476,16 @@ function loadingBanner() {
         ScrollTrigger.refresh(); // Update lại ScrollTrigger
 
         window.scrollTo({ top: 0, behavior: "smooth" }); // Cuộn về đầu trang
-      },
-    },
+      }
+    }
   });
 
   tl.to(".anim-clip-circle", {
-    clipPath: "circle(70.7% at 50% 50%)",
+    clipPath: "circle(70.7% at 50% 50%)"
   }).to(
     ".banner-container img",
     {
-      scale: 1,
+      scale: 1
     },
     0
   );
@@ -531,7 +546,7 @@ function magicCursor() {
   var cursor = new MouseFollower({
     speed: 0.8,
     skewing: 1,
-    skewingText: 3,
+    skewingText: 3
   });
 
   const element = document.querySelectorAll("[data-cursor]");
@@ -575,7 +590,7 @@ function distortionImgNav() {
           angle: 0,
           image1: imageSrc,
           image2: imageSrc,
-          displacementImage: "./assets/images/distortion/ripple.jpg",
+          displacementImage: "./assets/images/distortion/ripple.jpg"
         });
         wrapper.__hoverEffect = effectInstance;
       }
@@ -631,7 +646,7 @@ function bookingOffer() {
         } catch (error) {
           console.error("Lỗi trong Lightpick onSelect:", error);
         }
-      },
+      }
     });
   }
 
@@ -645,7 +660,7 @@ function bookingOffer() {
       adult: form.find("input[name='adult']"),
       name: form.find("input[name='name']"),
       phone: form.find("input[name='phone']"),
-      email: form.find("input[name='email']"),
+      email: form.find("input[name='email']")
     };
 
     // Reset lỗi
@@ -675,7 +690,7 @@ function bookingOffer() {
         adult: fields.adult.val().trim(),
         name: fields.name.val().trim(),
         phone: fields.phone.val().trim(),
-        email: fields.email.val().trim(),
+        email: fields.email.val().trim()
       },
       beforeSend: function () {
         $(".contact-message").remove();
@@ -708,7 +723,7 @@ function bookingOffer() {
         form.append(
           '<span class="contact-message" style="color: red;">Có lỗi xảy ra, vui lòng thử lại sau.</span>'
         );
-      },
+      }
     });
   });
 }
@@ -719,14 +734,14 @@ function animationText() {
     const splitDescription = new SplitText(description, {
       type: "lines",
       linesClass: "line",
-      mask: "lines",
+      mask: "lines"
     });
 
     gsap.fromTo(
       splitDescription.lines,
       {
         yPercent: 100,
-        willChange: "transform",
+        willChange: "transform"
       },
       {
         yPercent: 0,
@@ -736,9 +751,9 @@ function animationText() {
 
         scrollTrigger: {
           trigger: description,
-          start: "top 60%",
+          start: "top 60%"
           // markers: true,
-        },
+        }
       }
     );
   });
@@ -749,18 +764,18 @@ function animationText() {
       {
         "will-change": "opacity, transform",
         opacity: 0,
-        y: 20,
+        y: 20
       },
       {
         scrollTrigger: {
           trigger: element,
           start: "top 60%",
-          end: "bottom 60%",
+          end: "bottom 60%"
         },
         opacity: 1,
         y: 0,
         duration: 0.5,
-        ease: "sine.out",
+        ease: "sine.out"
       }
     );
   });
@@ -785,9 +800,9 @@ function itemParallax() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2,
+          delay: 0.2
           // markers: true
-        },
+        }
       }
     );
   });
@@ -806,8 +821,8 @@ function itemParallax() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true,
-      },
+        scrub: true
+      }
     });
   });
 }

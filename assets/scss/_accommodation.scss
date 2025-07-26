@@ -30,6 +30,11 @@
         width: max-content;
         grid-column: 2 / 3;
         margin-left: auto;
+        margin-top: 24px;
+
+        @media (max-width: 991px) {
+          margin-top: 0;
+        }
       }
     }
   }
