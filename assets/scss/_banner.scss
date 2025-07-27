@@ -38,7 +38,7 @@
         font-size: 28px;
         line-height: 32px;
         bottom: 24px;
-        max-width: calc(8 / 12 * 100%);
+        max-width: 292px;
         left: 24px;
         right: 50px;
       }
@@ -116,6 +116,16 @@
           display: flex;
           align-items: center;
           gap: 16px;
+          .min,
+          .plus {
+            position: relative;
+            &::before {
+              content: "";
+              position: absolute;
+              inset: -5px -10px;
+              background-color: transparent;
+            }
+          }
         }
       }
       .child {
@@ -219,7 +229,7 @@
 }
 .banner-booking-mobile {
   position: fixed;
-  z-index: 20;
+  z-index: 100;
   left: 0;
   right: 0;
   top: 48px;

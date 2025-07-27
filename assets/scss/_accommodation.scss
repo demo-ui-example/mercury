@@ -13,7 +13,10 @@
     margin-bottom: 140px;
     @media (max-width: 991px) {
       padding: 0 24px;
-      margin-bottom: 64px;
+      margin-bottom: 40px;
+      .box-title {
+        margin-inline: auto;
+      }
     }
     .box {
       &-global {
@@ -61,6 +64,7 @@
       padding-left: 80px;
       @media (max-width: 991px) {
         padding-left: 24px;
+        padding-right: 24px;
       }
 
       .accommodation-card {

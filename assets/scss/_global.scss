@@ -204,10 +204,12 @@
         min-width: 200px;
       }
     }
+
     h1 {
       @media (max-width: 991px) {
         font-size: 34px;
         line-height: 40px;
+        width: max-content;
       }
     }
     .line {
@@ -539,6 +541,7 @@
   padding: 0 80px;
   @media (max-width: 991px) {
     padding: 0 24px;
+    height: 24px;
   }
   .swiper-pagination {
     margin-top: 40px;
