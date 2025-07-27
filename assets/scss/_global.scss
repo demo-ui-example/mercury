@@ -94,6 +94,11 @@
       background-color: var(--color-secondary);
     }
   }
+  &.before-white {
+    &::before {
+      background-color: var(--color-white);
+    }
+  }
   &:hover {
     &::before {
       transform: scaleX(1) translateZ(0);
@@ -597,7 +602,7 @@
 
 .lightpick__day.is-today {
   color: var(--color-primary);
-  font-weight: 900;
+  font-weight: 400;
   background-image: none;
 }
 
@@ -631,12 +636,12 @@
 .lightpick__day.is-end-date.is-in-range,
 .lightpick__day.is-start-date.is-in-range.is-flipped {
   background-color: var(--color-primary);
-  font-weight: 900;
+  font-weight: 400;
 }
 
 .lightpick__month-title > .lightpick__select-months,
 .lightpick__day-of-the-week {
-  font-weight: 900;
+  font-weight: 400;
 }
 .lightpick__month-title {
   padding: 0;
@@ -649,6 +654,7 @@
 .lightpick__toolbar {
   display: flex;
   gap: 5px;
+  padding: 10px 20px;
 }
 .lightpick__next-action,
 .lightpick__previous-action {
