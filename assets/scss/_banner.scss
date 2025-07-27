@@ -50,7 +50,7 @@
     position: relative;
 
     &::before {
-      content: "";
+      content: unset;
       position: absolute;
       top: 0;
       left: 0;

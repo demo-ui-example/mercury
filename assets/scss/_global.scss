@@ -190,10 +190,22 @@
   &.one-line {
     .tag {
       right: 0;
-      transform: translateX(50%) rotate(-9deg);
+      transform: translateX(40%) rotate(-9deg);
+      bottom: -50px;
+      min-width: 300px;
       @media (max-width: 991px) {
-        transform: translateX(0%) rotate(-9deg);
+        transform: translateX(20%) rotate(-9deg);
+        bottom: -20px;
       }
+    }
+    h1 {
+      @media (max-width: 991px) {
+        font-size: 34px;
+        line-height: 40px;
+      }
+    }
+    .line {
+      line-height: 1.5;
     }
   }
 
