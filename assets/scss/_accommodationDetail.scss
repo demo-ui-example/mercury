@@ -60,10 +60,10 @@
           margin-top: 22px;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 12px 60px;
+          gap: 12px 20px;
           @media (max-width: 991px) {
             grid-template-columns: 1fr 1fr;
-            gap: 12px 40px;
+            gap: 12px 20px;
           }
           li {
             display: flex;
@@ -248,14 +248,15 @@
       align-items: center;
 
       .content {
-        transform: translateY(calc((-120px) - 32px));
+        // transform: translateY(calc((-120px) - 32px));
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 120px;
+        gap: 64px;
+        width: 100%;
         @media (max-width: 991px) {
-          transform: translateY(calc((-40px)));
+          // transform: translateY(calc((-40px)));
           height: 100%;
           gap: 24px;
         }
@@ -263,10 +264,11 @@
 
       .list-item {
         grid-template-columns: repeat(5, 1fr);
-        gap: 12px 80px;
+        gap: 12px 20px;
+        width: 90%;
         @media (max-width: 991px) {
           grid-template-columns: repeat(2, 1fr);
-          gap: 12px 40px;
+          gap: 12px 20px;
         }
       }
     }

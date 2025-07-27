@@ -89,6 +89,44 @@
   background-clip: padding-box;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--color-primary);
+
+  &.aloading {
+    pointer-events: none;
+    color: var(--color-secondary);
+
+    &::before {
+      transform: scaleX(1) translateZ(0);
+      transform-origin: bottom left;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid transparent;
+      border-radius: 50%;
+      border-top: 2px solid var(--color-primary);
+      border-right: 2px solid var(--color-primary);
+      width: 20px;
+      height: 20px;
+      animation: spin-animation 1s linear infinite;
+      z-index: 2;
+      background: 0 0;
+    }
+
+    @keyframes spin-animation {
+      0% {
+        transform: translate(-50%, -50%) rotate(0);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+  }
+
   &.option-bg-white {
     &::before {
       background-color: var(--color-secondary);
@@ -665,6 +703,7 @@
   display: flex;
   gap: 5px;
   padding: 10px 20px;
+  background-color: var(--color-white);
   @media (max-width: 991px) {
     padding-right: 8px;
   }

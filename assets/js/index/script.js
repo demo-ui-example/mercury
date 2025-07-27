@@ -672,19 +672,21 @@ function bookingOffer() {
       startday: form.find("input[name='startday']"),
       endday: form.find("input[name='endday']"),
       adult: form.find("input[name='adult']"),
+      child: form.find("input[name='child']"),
       name: form.find("input[name='name']"),
       phone: form.find("input[name='phone']"),
-      email: form.find("input[name='email']")
+      email: form.find("input[name='email']"),
+      offer_id: form.find("input[name='offer_id']")
     };
 
-    // Reset lỗi
     form.find(".error-message").remove();
     form.find("input").removeClass("error");
 
     let isValid = true;
 
-    // Validate từng field
     $.each(fields, (key, field) => {
+      if (key === "child") return;
+
       if (!field.val().trim()) {
         field.addClass("error");
         isValid = false;
@@ -693,50 +695,43 @@ function bookingOffer() {
 
     if (!isValid) return;
 
-    // Gửi dữ liệu qua AJAX
     $.ajax({
       type: "POST",
-      url: ajaxUrl, // ← biến global từ theme hoặc page
+      url: ajaxUrl,
       data: {
-        action: "submit_contact_form",
+        action: "submit_booking_form",
         startday: fields.startday.val().trim(),
         endday: fields.endday.val().trim(),
         adult: fields.adult.val().trim(),
+        child: fields.child.val().trim() || "0",
         name: fields.name.val().trim(),
         phone: fields.phone.val().trim(),
-        email: fields.email.val().trim()
+        email: fields.email.val().trim(),
+        offer_id: fields.offer_id.val().trim()
       },
       beforeSend: function () {
-        $(".contact-message").remove();
-        console.log("Đang gửi dữ liệu...");
+        form.find("button[type='submit']").addClass("aloading");
       },
       success: function (res) {
-        console.log("Phản hồi từ server:", res);
+        form.find("button[type='submit']").removeClass("aloading");
 
-        let message = "";
-        if (res.success === true) {
-          message = `<span class="contact-message" style="color: green;">${res.data}</span>`;
-          form.append(message);
-          form[0].reset();
+        form[0].reset();
 
-          setTimeout(function () {
-            $(".contact-message").fadeOut("slow", function () {
-              $(this).remove();
-            });
-          }, 5000);
-        } else {
-          message = `<span class="contact-message" style="color: red;">${
-            res.data || "Có lỗi xảy ra, vui lòng thử lại."
-          }</span>`;
-          form.append(message);
+        const modalEl = document.getElementById("modalSuccess");
+        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+        if (!modalEl.classList.contains("show")) {
+          modalInstance.show();
         }
+
+        setTimeout(function () {
+          if (modalEl.classList.contains("show")) {
+            modalInstance.hide();
+          }
+        }, 10000);
       },
       error: function (xhr, status, error) {
         console.error("Lỗi khi gửi form:", error);
-        $(".contact-message").remove();
-        form.append(
-          '<span class="contact-message" style="color: red;">Có lỗi xảy ra, vui lòng thử lại sau.</span>'
-        );
       }
     });
   });
@@ -902,6 +897,40 @@ function loading() {
     }
   );
 }
+
+function handleStickyDetection() {
+  const stickyEl = document.querySelector(".filter-desktop");
+  const stickyElMobile = document.querySelector(".filter-mobile");
+
+  if (!stickyEl || !stickyElMobile) return;
+
+  const stickyOffset = 86;
+  const stickyOffsetMobile = 48;
+
+  function onScroll() {
+    if (stickyEl) {
+      const rect = stickyEl.getBoundingClientRect();
+      if (rect.top <= stickyOffset) {
+        stickyEl.classList.add("pinned");
+      } else {
+        stickyEl.classList.remove("pinned");
+      }
+    }
+
+    if (stickyElMobile) {
+      const rectMobile = stickyElMobile.getBoundingClientRect();
+      if (rectMobile.top <= stickyOffsetMobile) {
+        stickyElMobile.classList.add("pinned");
+      } else {
+        stickyElMobile.classList.remove("pinned");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+}
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   loading();
@@ -920,6 +949,7 @@ const init = () => {
   bookingOffer();
   animationText();
   bookingFormMobile();
+  handleStickyDetection();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

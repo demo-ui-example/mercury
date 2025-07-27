@@ -5,10 +5,11 @@
   background-size: contain;
   background-position: top;
   @media (max-width: 991px) {
-    padding: 80px 24px;
+    padding: 80px 0;
   }
   &-top {
     margin-bottom: 190px;
+    padding: 0 24px;
 
     @media (min-width: 992px) {
       padding: 0 80px;
@@ -30,12 +31,22 @@
   }
   &-bottom {
     @media (min-width: 992px) {
-      padding: 0 80px;
+      // padding: 0 80px;
     }
+
+    .tab-content {
+      padding: 0 80px;
+
+      @media (max-width: 991px) {
+        padding: 0 24px;
+      }
+    }
+
     .nav {
-      margin-bottom: 80px;
+      margin: 0 auto 80px;
       border: none;
       border-bottom: 1px solid var(--color-primary);
+      max-width: calc(100% - 180px);
       @media (max-width: 991px) {
         background-color: var(--color-secondary);
         flex-direction: column;
@@ -43,6 +54,7 @@
         gap: 16px;
         padding: 12px 0;
         border-bottom: none;
+        max-width: 100%;
       }
       &-link {
         border: none;
@@ -163,21 +175,30 @@
   }
   .filter-desktop {
     position: sticky;
-    top: 80px;
+    top: 86px;
     z-index: 2;
     background-color: transparent;
     transition: background-color 0.3s ease;
 
     &.pinned {
-      background-color: var(--color-white);
+      background-color: var(--color-secondary);
     }
   }
   .filter-mobile {
+    &.pinned {
+      background-color: var(--color-secondary);
+    }
+
     @media (max-width: 991px) {
       position: sticky;
       top: 48px;
       z-index: 2;
       background-color: transparent;
+    }
+
+    .filter-head {
+      width: calc(100% - 48px);
+      margin: 0 auto;
     }
   }
 }

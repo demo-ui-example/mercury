@@ -113,6 +113,10 @@
             &::placeholder {
               color: var(--color-primary);
             }
+
+            &.error {
+              border-color: #ff0000;
+            }
           }
         }
 
