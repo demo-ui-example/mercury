@@ -415,10 +415,8 @@ function distortionImg() {
   document.querySelectorAll(".distortion-img").forEach((wrapper) => {
     const imgElement = wrapper.querySelector("img");
     const imgReplace =
-      wrapper.getAttribute("data-img-distortion") ||
+      wrapper.getAttribute("img-distortion") ||
       "./assets/images/distortion/ripple.jpg";
-
-    console.log(imgReplace);
 
     if (imgElement) {
       const imageSrc = imgElement.src;
@@ -574,6 +572,10 @@ function distortionImgNav() {
     tabPane.querySelectorAll(".distortion-img-nav").forEach((wrapper) => {
       const imgElement = wrapper.querySelector("img");
 
+      const imgReplace =
+        wrapper.getAttribute("img-distortion") ||
+        "./assets/images/distortion/ripple.jpg";
+
       if (imgElement) {
         const imageSrc = imgElement.src;
 
@@ -595,7 +597,7 @@ function distortionImgNav() {
           angle: 0,
           image1: imageSrc,
           image2: imageSrc,
-          displacementImage: "./assets/images/distortion/ripple.jpg"
+          displacementImage: imgReplace
         });
         wrapper.__hoverEffect = effectInstance;
       }

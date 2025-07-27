@@ -14,7 +14,7 @@
   }
 
   &-hero-clip {
-    background-image: url("../../images/banner-2.jpg");
+    background-image: var(--bg-hero-clip);
     background-position: center;
     background-size: cover;
     position: relative;
