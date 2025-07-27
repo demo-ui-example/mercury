@@ -885,8 +885,26 @@ function bookingFormMobile() {
     };
   });
 }
+function loading() {
+  if ($(".loading").length < 1) return;
+  const tl = gsap.timeline({
+    defaults: { duration: 2, ease: "power2.inOut" },
+  });
+
+  tl.fromTo(
+    ".loading",
+    { clipPath: "inset(0% 0% 0% 0%)" },
+    {
+      clipPath: "inset(0% 0% 100% 0%)",
+      onComplete: () => {
+        document.querySelector(".loading").classList.add("d-none");
+      },
+    }
+  );
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
+  loading();
   itemParallax();
   customDropdown();
   bookingForm();
