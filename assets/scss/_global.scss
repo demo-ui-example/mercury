@@ -201,6 +201,7 @@
       @media (max-width: 991px) {
         transform: translateX(20%) rotate(-9deg);
         bottom: -20px;
+        min-width: 200px;
       }
     }
     h1 {
