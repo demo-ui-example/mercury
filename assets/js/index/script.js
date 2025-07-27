@@ -882,8 +882,42 @@ function bookingFormMobile() {
 }
 function loading() {
   if ($(".loading").length < 1) return;
+
+  // Ẩn tất cả text ngay từ đầu
+  gsap.set(".effect-line-banner", { opacity: 0 });
+
   const tl = gsap.timeline({
     defaults: { duration: 2, ease: "power2.inOut" }
+  });
+
+  gsap.delayedCall(1, () => {
+    gsap.utils.toArray(".effect-line-banner").forEach((description) => {
+      const splitDescriptionBanner = new SplitText(description, {
+        type: "lines",
+        linesClass: "line",
+        mask: "lines"
+      });
+
+      gsap.fromTo(
+        splitDescriptionBanner.lines,
+        {
+          yPercent: 100,
+          willChange: "transform",
+          opacity: 0
+        },
+        {
+          yPercent: 0,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.05,
+          opacity: 1,
+          onStart: () => {
+            // Hiện container khi animation bắt đầu
+            gsap.set(description, { opacity: 1 });
+          }
+        }
+      );
+    });
   });
 
   tl.fromTo(
