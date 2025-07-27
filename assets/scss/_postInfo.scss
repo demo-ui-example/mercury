@@ -4,6 +4,21 @@
     @media (max-width: 991px) {
       padding: 0 24px;
     }
+
+    &.bg-left {
+      background-image: url(../../images/use/bg-detail-left.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: top;
+    }
+
+    &.bg-right {
+      background-image: url(../../images/use/bg-detail-right.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: top;
+    }
+
     &:not(:first-child) {
       margin-top: 140px;
       @media (max-width: 991px) {

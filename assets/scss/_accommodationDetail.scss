@@ -1,4 +1,33 @@
 .accommodation-detail {
+  padding-top: 140px;
+  position: relative;
+
+  @media (max-width: 991px) {
+    padding-top: 64px;
+  }
+
+  &.section-spacing-80 {
+    padding-top: 80px;
+
+    @media (max-width: 991px) {
+      padding-top: 32px;
+    }
+  }
+
+  &.bg-left {
+    background-image: url(../../images/use/bg-detail-left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+
+  &.bg-right {
+    background-image: url(../../images/use/bg-detail-right.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+  }
+
   .detail {
     &-info {
       padding: 0 80px;
