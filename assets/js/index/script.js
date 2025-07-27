@@ -840,7 +840,51 @@ function itemParallax() {
     });
   });
 }
+function bookingFormMobile() {
+  if (window.innerWidth > 991) return;
+  if (!document.querySelector(".banner-booking-mobile")) return;
 
+  var lightPick2 = new Lightpick({
+    field: document.getElementById("check-in-mobile"),
+    secondField: document.getElementById("check-out-mobile"),
+    singleDate: false,
+    minDate: moment().startOf("now"),
+    numberOfMonths: 2,
+    onOpen: function () {
+      var input = lightPick2._opts.field;
+      var rect = input.getBoundingClientRect();
+      var calendar = lightPick2.el;
+      if (rect.top >= window.innerHeight / 2) {
+        calendar.style.top =
+          rect.top + window.scrollY - calendar.offsetHeight + "px";
+        calendar.style.left = rect.left + window.scrollX + "px";
+      } else {
+        calendar.style.top = rect.bottom + window.scrollY + "px";
+        calendar.style.left = rect.left + window.scrollX + "px";
+      }
+    },
+  });
+
+  // Counter functionality
+  document.querySelectorAll(".people, .child").forEach((section) => {
+    const minus = section.querySelector(".min");
+    const plus = section.querySelector(".plus");
+    const val = section.querySelector(".val");
+
+    plus.onclick = () => {
+      const current = parseInt(val.textContent);
+      val.textContent = Math.min(current + 1, 10);
+      minus.style.opacity = val.textContent > 0 ? "1" : "0.5";
+    };
+
+    minus.onclick = () => {
+      const current = parseInt(val.textContent);
+      const newVal = Math.max(current - 1, 0);
+      val.textContent = newVal;
+      minus.style.opacity = newVal > 0 ? "1" : "0.5";
+    };
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   itemParallax();
@@ -857,6 +901,7 @@ const init = () => {
   magicCursor();
   bookingOffer();
   animationText();
+  bookingFormMobile();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

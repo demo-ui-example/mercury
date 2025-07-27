@@ -665,6 +665,9 @@
   display: flex;
   gap: 5px;
   padding: 10px 20px;
+  @media (max-width: 991px) {
+    padding-right: 8px;
+  }
 }
 .lightpick__next-action,
 .lightpick__previous-action {
