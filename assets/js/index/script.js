@@ -414,6 +414,11 @@ function ctaMess() {
 function distortionImg() {
   document.querySelectorAll(".distortion-img").forEach((wrapper) => {
     const imgElement = wrapper.querySelector("img");
+    const imgReplace =
+      wrapper.getAttribute("data-img-distortion") ||
+      "./assets/images/distortion/ripple.jpg";
+
+    console.log(imgReplace);
 
     if (imgElement) {
       const imageSrc = imgElement.src;
@@ -426,7 +431,7 @@ function distortionImg() {
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: "./assets/images/distortion/ripple.jpg"
+        displacementImage: imgReplace
       });
     }
   });
