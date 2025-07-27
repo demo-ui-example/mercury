@@ -216,7 +216,13 @@
       line-height: 1.5;
     }
   }
-
+  &.mobile-left {
+    @media (max-width: 991px) {
+      .box-title {
+        margin-left: 0;
+      }
+    }
+  }
   .box-description {
     text-align: justify;
   }
