@@ -223,6 +223,7 @@
     @media (max-width: 991px) {
       right: 10px;
       bottom: -40px;
+      max-width: 200px;
     }
     .line {
       line-height: 1.25;
@@ -243,7 +244,7 @@
       }
     }
 
-    h1 {
+    .h0-font {
       @media (max-width: 991px) {
         font-size: 34px;
         line-height: 40px;
@@ -868,4 +869,8 @@
       }
     }
   }
+}
+.effect-line-banner,
+.effect-line {
+  line-height: 1.4;
 }
