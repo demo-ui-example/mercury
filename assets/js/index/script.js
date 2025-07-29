@@ -555,8 +555,9 @@ function magicCursor() {
 
   var cursor = new MouseFollower({
     speed: 0.8,
-    skewing: 1,
-    skewingText: 3
+    scale: 1,
+    skewing: 0,
+    skewingText: 0
   });
 
   const element = document.querySelectorAll("[data-cursor]");
@@ -1004,7 +1005,7 @@ const init = () => {
   bookingOffer();
   animationText();
   bookingFormMobile();
-  handleStickyDetection();
+  // handleStickyDetection();
   pageOffer();
 };
 preloadImages("img").then(() => {

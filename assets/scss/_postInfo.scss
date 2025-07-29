@@ -9,14 +9,24 @@
       background-image: url(../../images/use/bg-detail-left.png);
       background-repeat: no-repeat;
       background-size: contain;
-      background-position: top;
+      background-position: top left;
+
+      @media (max-width: 991px) {
+        background-image: url(../../images/use/bg-detail-left-mobile.png);
+        background-position: bottom left;
+      }
     }
 
     &.bg-right {
       background-image: url(../../images/use/bg-detail-right.png);
       background-repeat: no-repeat;
       background-size: contain;
-      background-position: top;
+      background-position: top right;
+
+      @media (max-width: 991px) {
+        background-image: url(../../images/use/bg-detail-right-mobile.png);
+        background-position: bottom left;
+      }
     }
 
     &:not(:first-child) {

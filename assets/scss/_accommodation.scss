@@ -8,9 +8,19 @@
     }
   }
 
+  // &.offer {
+  //   .accommodation-content {
+  //     margin-bottom: 100px;
+
+  //     @media (max-width: 991px) {
+  //       margin-bottom: 40px;
+  //     }
+  //   }
+  // }
+
   &-content {
     padding: 0 80px;
-    margin-bottom: 120px;
+    margin-bottom: 40px;
     @media (max-width: 991px) {
       padding: 0 24px;
       margin-bottom: 40px;
