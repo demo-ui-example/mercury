@@ -85,7 +85,7 @@
           border-radius: 8px;
 
           &::after {
-            content: "";
+            // content: "";
             position: absolute;
             inset: 0;
             background-color: rgba(0, 0, 0, 0.2);

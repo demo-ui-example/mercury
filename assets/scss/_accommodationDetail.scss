@@ -19,6 +19,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
+
+    @media (max-width: 991px) {
+      background-position: bottom;
+    }
   }
 
   &.bg-right {
@@ -26,6 +30,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top;
+
+    @media (max-width: 991px) {
+      background-position: bottom;
+    }
   }
 
   .detail {
@@ -156,7 +164,7 @@
             position: absolute;
             z-index: 1;
             inset: 0;
-            background-color: rgba($color: #000000, $alpha: 0.2);
+            // background-color: rgba($color: #000000, $alpha: 0.2);
             transition: background-color 0.5s ease;
           }
 
