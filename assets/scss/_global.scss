@@ -530,6 +530,7 @@
         opacity 0.4s ease;
       transform: scale(0);
       transform-origin: center;
+
       &.talk,
       &.wtf {
         &:hover {
@@ -553,6 +554,12 @@
           }
           stroke {
             color: var(--color-secondary);
+          }
+
+          &.transition-primary {
+            path {
+              fill: var(--color-primary);
+            }
           }
         }
       }

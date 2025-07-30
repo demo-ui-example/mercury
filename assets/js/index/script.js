@@ -1033,7 +1033,8 @@ function pageOffer() {
 }
 
 function animateDestinationItems() {
-  if ($(window).width() < 992) return;
+  if ($(window).width() < 992 && $(".destination .destination-item").length < 1)
+    return;
 
   const items = document.querySelectorAll(".destination .destination-item");
   const count = items.length;

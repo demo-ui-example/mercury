@@ -77,6 +77,10 @@
     @media (max-width: 991px) {
       aspect-ratio: 327 / 540;
     }
+
+    @media (min-width: 992px) {
+      max-height: calc(100vh - 140px);
+    }
   }
   &-list {
     display: flex;
