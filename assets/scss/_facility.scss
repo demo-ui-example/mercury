@@ -141,6 +141,12 @@
       content: unset;
       font-size: 0;
     }
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      background-color: transparent;
+    }
     @media (max-width: 991px) {
       display: none;
     }
