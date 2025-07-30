@@ -40,7 +40,8 @@
       }
     }
     @media (max-width: 991px) {
-      height: 560px;
+      height: 100%;
+      max-height: 560px;
     }
     img {
       width: 100%;
@@ -63,7 +64,7 @@
   &-title {
     margin-bottom: 115px;
     @media (max-width: 991px) {
-      margin-bottom: 72px;
+      margin-bottom: 40px;
       padding: 0 24px;
     }
   }
