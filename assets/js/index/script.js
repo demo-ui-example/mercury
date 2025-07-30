@@ -557,26 +557,22 @@ function distortionImgNav() {
   function initializeDistortion(tabPane) {
     tabPane.querySelectorAll(".distortion-img-nav").forEach((wrapper) => {
       const imgElement = wrapper.querySelector("img");
-
       const imgReplace =
         wrapper.getAttribute("img-distortion") ||
         "./assets/images/distortion/ripple.jpg";
 
       if (imgElement) {
         const imageSrc = imgElement.src;
-
-        // Ẩn ảnh gốc
         imgElement.style.display = "none";
 
-        // Xóa hiệu ứng cũ (nếu có)
         let effectInstance = wrapper.__hoverEffect;
         if (effectInstance && typeof effectInstance.destroy === "function") {
-          effectInstance.destroy(); // Giải phóng tài nguyên WebGL
+          effectInstance.destroy();
         }
-        wrapper.innerHTML = ""; // Xóa nội dung cũ
-        wrapper.appendChild(imgElement); // Thêm lại ảnh gốc
 
-        // Khởi tạo mới hoverEffect và lưu instance
+        wrapper.querySelectorAll("img, canvas").forEach((el) => el.remove());
+        wrapper.appendChild(imgElement);
+
         effectInstance = new hoverEffect({
           parent: wrapper,
           intensity: 0.1,
@@ -585,18 +581,17 @@ function distortionImgNav() {
           image2: imageSrc,
           displacementImage: imgReplace
         });
+
         wrapper.__hoverEffect = effectInstance;
       }
     });
   }
 
-  // Khởi tạo cho tab active ban đầu
   const activeTabPane = document.querySelector(".tab-pane.active");
   if (activeTabPane) {
     initializeDistortion(activeTabPane);
   }
 
-  // Lắng nghe sự kiện khi tab được hiển thị
   document.querySelectorAll('[data-bs-toggle="tab"]').forEach((tab) => {
     tab.addEventListener("shown.bs.tab", (event) => {
       const targetPaneId = event.target.getAttribute("data-bs-target");
@@ -1037,6 +1032,30 @@ function pageOffer() {
   }
 }
 
+function animateDestinationItems() {
+  if ($(window).width() < 992) return;
+
+  const items = document.querySelectorAll(".destination .destination-item");
+  const count = items.length;
+  const totalTime = 2.4;
+  const staggerTime = 0.2;
+
+  const duration = Math.max(0.1, totalTime - staggerTime * (count - 1));
+
+  gsap.from(items, {
+    scrollTrigger: {
+      trigger: ".destination-list",
+      start: "top 60%",
+      toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 50,
+    duration: duration,
+    stagger: staggerTime,
+    ease: "power2.out"
+  });
+}
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   loading();
@@ -1057,6 +1076,7 @@ const init = () => {
   bookingFormMobile();
   // handleStickyDetection();
   pageOffer();
+  animateDestinationItems();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

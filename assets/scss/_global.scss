@@ -229,6 +229,15 @@
       line-height: 1.25;
     }
   }
+
+  &.event {
+    .tag {
+      @media (max-width: 991px) {
+        right: -30px;
+        bottom: -30px;
+      }
+    }
+  }
 }
 .box-global {
   &.one-line {
@@ -255,6 +264,15 @@
     .font-heading {
       .line {
         line-height: 1.5;
+      }
+    }
+
+    &.other-offer {
+      .tag {
+        @media (max-width: 991px) {
+          bottom: -30px;
+          right: -50px;
+        }
       }
     }
   }
