@@ -236,7 +236,8 @@
       right: 0;
       transform: translateX(40%) rotate(-9deg);
       bottom: -50px;
-      min-width: 300px;
+      min-width: 400px;
+      max-width: unset;
       @media (max-width: 991px) {
         transform: translateX(20%) rotate(-9deg);
         bottom: -20px;
@@ -251,8 +252,10 @@
         width: max-content;
       }
     }
-    .line {
-      line-height: 1.5;
+    .font-heading {
+      .line {
+        line-height: 1.5;
+      }
     }
   }
   &.mobile-left {
@@ -403,7 +406,7 @@
 
   @media (max-width: 991px) {
     right: 24px;
-    bottom: 110px;
+    bottom: 40px;
   }
 
   &:hover {
@@ -552,10 +555,10 @@
     align-items: flex-start;
     .box-title {
       .tag {
-        right: -50%;
+        // right: -50%;
 
         @media (max-width: 991px) {
-          right: -40%;
+          // right: -40%;
         }
       }
     }
