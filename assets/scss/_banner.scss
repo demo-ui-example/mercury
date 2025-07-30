@@ -150,6 +150,11 @@
         color: var(--color-secondary);
         border-radius: 0 4px 4px 0;
         border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        white-space: nowrap;
       }
       .check-in,
       .check-out {
