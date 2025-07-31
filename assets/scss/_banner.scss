@@ -114,13 +114,22 @@
         gap: 16px;
         align-items: center;
         padding-left: 35px;
+        .label {
+          white-space: nowrap;
+        }
         .select {
           display: flex;
           align-items: center;
           gap: 16px;
+
           .min,
           .plus {
             position: relative;
+            svg {
+              max-width: 16px;
+              width: 16px;
+              height: 16px;
+            }
             &::before {
               content: "";
               position: absolute;
@@ -246,7 +255,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  z-index: 110;
   will-change: clip-path;
   transition: all 0.3s ease;
   clip-path: inset(100% 0 0 0);
@@ -305,6 +314,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        svg {
+          width: 16px;
+          height: 16px;
+          max-width: 16px;
+        }
       }
     }
   }
