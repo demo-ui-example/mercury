@@ -25,9 +25,14 @@
     height: max-content;
     position: sticky;
     top: 120px;
+
     @media (max-width: 991px) {
       position: static;
       width: 100%;
+      aspect-ratio: 4 / 3;
+    }
+
+    @media (max-width: 767px) {
       aspect-ratio: 327 / 540;
     }
     // display: flex;
@@ -75,6 +80,10 @@
     overflow: hidden;
     position: relative;
     @media (max-width: 991px) {
+      aspect-ratio: 4 / 3;
+    }
+
+    @media (max-width: 767px) {
       aspect-ratio: 327 / 540;
     }
 
@@ -88,6 +97,11 @@
     gap: 80px;
     @media (max-width: 991px) {
       gap: 40px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 767px) {
+      display: flex;
     }
   }
   &-img {

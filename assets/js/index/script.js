@@ -101,7 +101,7 @@ function bookingForm() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    },
+    }
   });
 
   // Counter functionality
@@ -152,10 +152,24 @@ function sectionAccommodation() {
     const $next = $section.find(".swiper-button-next");
 
     const isOffer = $slider.hasClass("offer-slider");
+    let winWidth = $(window).width();
+    let slidePerView;
 
-    let slidePerView = $(window).width() > 767 ? (isOffer ? 2.5 : 3.3) : 1;
+    // let slidePerView = $(window).width() > 767 ? (isOffer ? 2.5 : 3.3) : 1;
     let spaceBetween = $(window).width() > 767 ? 40 : 24;
     let spaceafter = $(window).width() > 767 ? 80 : 0;
+
+    if (isOffer) {
+      slidePerView = winWidth < 768 ? 1 : 2.5;
+    } else {
+      if (winWidth < 768) {
+        slidePerView = 1;
+      } else if (winWidth < 992) {
+        slidePerView = 2.5;
+      } else {
+        slidePerView = 3.3;
+      }
+    }
 
     new Swiper($slider[0], {
       spaceBetween: spaceBetween,
@@ -164,12 +178,12 @@ function sectionAccommodation() {
       slidesOffsetAfter: spaceafter,
       pagination: {
         el: $pagination[0],
-        type: "progressbar",
+        type: "progressbar"
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0],
-      },
+        nextEl: $next[0]
+      }
     });
   });
 }
@@ -185,7 +199,7 @@ function swiperFacility() {
 
       pagination: {
         el: el.querySelector(".swiper-pagination"),
-        clickable: true,
+        clickable: true
         // renderBullet: function (index, className) {
         //   return `
         //     <button class="${className}">
@@ -195,7 +209,7 @@ function swiperFacility() {
       },
       navigation: {
         nextEl: el.querySelector(".swiper-button-next"),
-        prevEl: el.querySelector(".swiper-button-prev"),
+        prevEl: el.querySelector(".swiper-button-prev")
       },
       on: {
         init(swiper) {
@@ -270,8 +284,8 @@ function swiperFacility() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        },
-      },
+        }
+      }
     });
   });
 }
@@ -307,12 +321,12 @@ function swiperAccommodation() {
       parallax: true,
       pagination: {
         el: $pagination[0],
-        type: "progressbar",
+        type: "progressbar"
       },
       navigation: {
         prevEl: $prev[0],
-        nextEl: $next[0],
-      },
+        nextEl: $next[0]
+      }
     });
 
     // Handle modal gallery slider
@@ -344,17 +358,17 @@ function swiperAccommodation() {
         // centeredSlides: true,
         pagination: {
           el: $paginationG[0],
-          type: "progressbar",
+          type: "progressbar"
         },
         navigation: {
           prevEl: $prevG[0],
-          nextEl: $nextG[0],
+          nextEl: $nextG[0]
         },
         breakpoints: {
           991: {
             spaceBetween: 40,
-            slidesPerView: "auto",
-          },
+            slidesPerView: "auto"
+          }
         },
         on: {
           slideChange: function () {
@@ -366,8 +380,8 @@ function swiperAccommodation() {
           init: function () {
             // Reveal Swiper after initialization
             $gallery.removeClass("swiper-hidden").addClass("swiper-visible");
-          },
-        },
+          }
+        }
       });
     }
   });
@@ -382,7 +396,7 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
-    },
+    }
   });
 }
 function distortionImg() {
@@ -403,7 +417,7 @@ function distortionImg() {
         angle: 0,
         image1: imageSrc,
         image2: imageSrc,
-        displacementImage: imgReplace,
+        displacementImage: imgReplace
       });
     }
   });
@@ -457,16 +471,16 @@ function loadingBanner() {
         ScrollTrigger.refresh(); // Update lại ScrollTrigger
 
         window.scrollTo({ top: 0, behavior: "smooth" }); // Cuộn về đầu trang
-      },
-    },
+      }
+    }
   });
 
   tl.to(".anim-clip-circle", {
-    clipPath: "circle(70.7% at 50% 50%)",
+    clipPath: "circle(70.7% at 50% 50%)"
   }).to(
     ".banner-container img",
     {
-      scale: 1,
+      scale: 1
     },
     0
   );
@@ -535,7 +549,7 @@ function magicCursor() {
     speed: 0.8,
     scale: 1,
     skewing: 0,
-    skewingText: 0,
+    skewingText: 0
   });
 
   const element = document.querySelectorAll("[data-cursor]");
@@ -579,7 +593,7 @@ function distortionImgNav() {
           angle: 0,
           image1: imageSrc,
           image2: imageSrc,
-          displacementImage: imgReplace,
+          displacementImage: imgReplace
         });
 
         wrapper.__hoverEffect = effectInstance;
@@ -634,7 +648,7 @@ function bookingOffer() {
         } catch (error) {
           console.error("Lỗi trong Lightpick onSelect:", error);
         }
-      },
+      }
     });
   }
 
@@ -650,7 +664,7 @@ function bookingOffer() {
       name: form.find("input[name='name']"),
       phone: form.find("input[name='phone']"),
       email: form.find("input[name='email']"),
-      offer_id: form.find("input[name='offer_id']"),
+      offer_id: form.find("input[name='offer_id']")
     };
 
     form.find(".error-message").remove();
@@ -681,7 +695,7 @@ function bookingOffer() {
         name: fields.name.val().trim(),
         phone: fields.phone.val().trim(),
         email: fields.email.val().trim(),
-        offer_id: fields.offer_id.val().trim(),
+        offer_id: fields.offer_id.val().trim()
       },
       beforeSend: function () {
         form.find("button[type='submit']").addClass("aloading");
@@ -706,7 +720,7 @@ function bookingOffer() {
       },
       error: function (xhr, status, error) {
         console.error("Lỗi khi gửi form:", error);
-      },
+      }
     });
   });
 }
@@ -717,14 +731,14 @@ function animationText() {
     const splitDescription = new SplitText(description, {
       type: "lines",
       linesClass: "line",
-      mask: "lines",
+      mask: "lines"
     });
 
     gsap.fromTo(
       splitDescription.lines,
       {
         yPercent: 100,
-        willChange: "transform",
+        willChange: "transform"
       },
       {
         yPercent: 0,
@@ -734,9 +748,9 @@ function animationText() {
 
         scrollTrigger: {
           trigger: description,
-          start: "top 60%",
+          start: "top 60%"
           // markers: true,
-        },
+        }
       }
     );
   });
@@ -747,18 +761,18 @@ function animationText() {
       {
         "will-change": "opacity, transform",
         opacity: 0,
-        y: 20,
+        y: 20
       },
       {
         scrollTrigger: {
           trigger: element,
           start: "top 70%",
-          end: "bottom 70%",
+          end: "bottom 70%"
         },
         opacity: 1,
         y: 0,
         duration: 0.5,
-        ease: "sine.out",
+        ease: "sine.out"
       }
     );
   });
@@ -770,18 +784,18 @@ function animationText() {
         {
           "will-change": "opacity, transform",
           opacity: 0,
-          y: 20,
+          y: 20
         },
         {
           scrollTrigger: {
             trigger: element,
             start: "top 70%",
-            end: "bottom 70%",
+            end: "bottom 70%"
           },
           opacity: 1,
           y: 0,
           duration: 0.5,
-          ease: "sine.out",
+          ease: "sine.out"
         }
       );
     });
@@ -807,9 +821,9 @@ function itemParallax() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2,
+          delay: 0.2
           // markers: true
-        },
+        }
       }
     );
   });
@@ -828,8 +842,8 @@ function itemParallax() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true,
-      },
+        scrub: true
+      }
     });
   });
 }
@@ -855,7 +869,7 @@ function bookingFormMobile() {
         calendar.style.top = rect.bottom + window.scrollY + "px";
         calendar.style.left = rect.left + window.scrollX + "px";
       }
-    },
+    }
   });
 
   // Counter functionality
@@ -933,7 +947,7 @@ function loading() {
   gsap.set(".effect-line-banner", { opacity: 0 });
 
   const tl = gsap.timeline({
-    defaults: { duration: 2, ease: "power2.inOut" },
+    defaults: { duration: 2, ease: "power2.inOut" }
   });
 
   gsap.delayedCall(1, () => {
@@ -941,7 +955,7 @@ function loading() {
       const splitDescriptionBanner = new SplitText(description, {
         type: "lines",
         linesClass: "line",
-        mask: "lines",
+        mask: "lines"
       });
 
       gsap.fromTo(
@@ -949,7 +963,7 @@ function loading() {
         {
           yPercent: 100,
           willChange: "transform",
-          opacity: 0,
+          opacity: 0
         },
         {
           yPercent: 0,
@@ -960,7 +974,7 @@ function loading() {
           onStart: () => {
             // Hiện container khi animation bắt đầu
             gsap.set(description, { opacity: 1 });
-          },
+          }
         }
       );
     });
@@ -973,7 +987,7 @@ function loading() {
       clipPath: "inset(0% 0% 100% 0%)",
       onComplete: () => {
         document.querySelector(".loading").classList.add("d-none");
-      },
+      }
     }
   );
 }
@@ -1023,7 +1037,7 @@ function pageOffer() {
       setTimeout(function () {
         $("html, body").animate(
           {
-            scrollTop: $target.offset().top - 80,
+            scrollTop: $target.offset().top - 80
           },
           600
         ); // Thời gian scroll
@@ -1047,13 +1061,13 @@ function animateDestinationItems() {
     scrollTrigger: {
       trigger: ".destination-list",
       start: "top 60%",
-      toggleActions: "play none none none",
+      toggleActions: "play none none none"
     },
     opacity: 0,
     y: 50,
     duration: duration,
     stagger: staggerTime,
-    ease: "power2.out",
+    ease: "power2.out"
   });
 }
 
