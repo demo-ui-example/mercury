@@ -1106,7 +1106,7 @@ function getNewletter() {
       success: function (res) {
         thisForm[0].reset();
 
-        const modalEl = document.getElementById("modalSuccess");
+        const modalEl = document.getElementById("modalSuccessNewsletter");
         const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
 
         if (!modalEl.classList.contains("show")) {
@@ -1125,6 +1125,28 @@ function getNewletter() {
       }
     });
   });
+}
+
+function scrollToHashLink() {
+  if (window.location.hash && window.location.hash.startsWith("#room-")) {
+    window.scrollTo(0, 0);
+
+    setTimeout(function () {
+      var $target = $(window.location.hash);
+      if ($target.length) {
+        var isMobile = window.innerWidth <= 768;
+        var offset = isMobile ? 40 : 48;
+        var offsetTop = $target.offset().top - offset;
+
+        $("html, body").animate(
+          {
+            scrollTop: offsetTop
+          },
+          600
+        );
+      }
+    }, 500);
+  }
 }
 
 const init = () => {
@@ -1149,6 +1171,7 @@ const init = () => {
   pageOffer();
   animateDestinationItems();
   getNewletter();
+  scrollToHashLink();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

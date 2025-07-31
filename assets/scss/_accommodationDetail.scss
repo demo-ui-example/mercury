@@ -202,12 +202,17 @@
   }
 
   .modal {
-    // &.modal-facility {
-    //   .modal-dialog {
-    //     max-width: 1440px;
-    //     width: calc(100% - 48px);
-    //   }
-    // }
+    &.modal-facility {
+      @media (min-width: 992px) {
+        .modal-dialog {
+          max-width: 1200px;
+        }
+
+        .modal-content {
+          height: 600px;
+        }
+      }
+    }
 
     &-dialog {
       width: 100%;
@@ -291,6 +296,10 @@
     &-gallery {
       .modal-body {
         padding: 0;
+      }
+
+      .swiper-wrapper {
+        cursor: pointer;
       }
 
       .modal-dialog {
