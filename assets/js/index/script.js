@@ -1071,6 +1071,62 @@ function animateDestinationItems() {
   });
 }
 
+function getNewletter() {
+  $("#form-newletter").on("submit", function (e) {
+    e.preventDefault();
+
+    const thisForm = $(this);
+    const emailField = thisForm.find("input[type='email']");
+
+    emailField.removeClass("error");
+    thisForm.siblings("span").remove();
+
+    if (!emailField.length) {
+      console.error("Không tìm thấy input email trong form.");
+      return;
+    }
+
+    const email = emailField.val() ? emailField.val().trim() : "";
+
+    if (!email) {
+      emailField.addClass("error");
+      return;
+    }
+
+    $.ajax({
+      type: "POST",
+      url: ajaxUrl,
+      data: {
+        action: "mercury_receive_newletter",
+        email: email
+      },
+      beforeSend: function () {
+        console.log("Đang gửi dữ liệu...");
+      },
+      success: function (res) {
+        thisForm[0].reset();
+
+        const modalEl = document.getElementById("modalSuccess");
+        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+        if (!modalEl.classList.contains("show")) {
+          modalInstance.show();
+        }
+
+        setTimeout(function () {
+          if (modalEl.classList.contains("show")) {
+            modalInstance.hide();
+          }
+        }, 10000);
+      },
+      error: function (xhr, status, error) {
+        console.error("Lỗi khi gửi form:", error);
+        alert("Có lỗi xảy ra, vui lòng thử lại sau.");
+      }
+    });
+  });
+}
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   loading();
@@ -1092,6 +1148,7 @@ const init = () => {
   // handleStickyDetection();
   pageOffer();
   animateDestinationItems();
+  getNewletter();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
