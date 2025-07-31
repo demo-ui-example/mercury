@@ -336,11 +336,13 @@
   z-index: 21;
   width: 100%;
   display: none;
+  transition: all 0.3s ease;
   @media (max-width: 991px) {
     display: block;
   }
   &.hide {
     pointer-events: none;
+    transform: translateY(100%);
   }
   button {
     width: 100%;
