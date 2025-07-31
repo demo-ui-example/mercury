@@ -52,6 +52,11 @@
     }
   }
   &.offer-sec {
+    .item-tag {
+      font-size: 12px;
+      padding: 4px 10px;
+    }
+
     @media (max-width: 991px) {
       .box-global {
         display: flex;

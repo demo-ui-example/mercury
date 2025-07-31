@@ -142,6 +142,11 @@
         grid-template-columns: 1fr;
         gap: 64px;
       }
+
+      .navigation-tag {
+        font-size: 12px;
+        padding: 4px 10px;
+      }
     }
     &-img {
       position: relative;
