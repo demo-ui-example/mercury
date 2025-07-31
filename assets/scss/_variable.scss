@@ -108,6 +108,9 @@ a {
     height: 64px;
   }
 }
+.spacing-64 {
+  height: 64px;
+}
 .spacing-mb-32 {
   @media (max-width: 991px) {
     height: 32px !important;
