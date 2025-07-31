@@ -4,7 +4,7 @@
   right: 0;
   left: 0;
   width: 100%;
-  z-index: 99;
+  z-index: 100;
   transition: all 0.5s;
   &.hide-header {
     transform: translateY(-100%);

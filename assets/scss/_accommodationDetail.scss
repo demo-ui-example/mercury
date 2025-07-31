@@ -255,6 +255,10 @@
       justify-content: center;
       align-items: center;
 
+      @media (max-width: 991px) {
+        overflow: unset;
+      }
+
       .content {
         // transform: translateY(calc((-120px) - 32px));
         display: flex;
@@ -267,6 +271,8 @@
           // transform: translateY(calc((-40px)));
           height: 100%;
           gap: 24px;
+          justify-content: flex-start;
+          margin-top: 40px;
         }
       }
 
@@ -277,6 +283,7 @@
         @media (max-width: 991px) {
           grid-template-columns: repeat(2, 1fr);
           gap: 12px 20px;
+          padding-bottom: 64px;
         }
       }
     }
