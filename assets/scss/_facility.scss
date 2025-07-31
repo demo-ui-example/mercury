@@ -1,9 +1,19 @@
 .facility {
   padding: 120px 80px;
   background-color: var(--color-secondary);
+
   @media (max-width: 991px) {
     padding: 64px 24px;
   }
+
+  &.is-home {
+    padding-bottom: 80px;
+
+    @media (max-width: 991px) {
+      padding-bottom: 64px;
+    }
+  }
+
   &-top {
     display: flex;
     justify-content: center;
