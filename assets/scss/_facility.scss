@@ -140,6 +140,9 @@
   }
 }
 .swiper-facility {
+  &:hover {
+    cursor: pointer;
+  }
   &.home {
     &::before {
       content: "";
@@ -155,24 +158,42 @@
     }
   }
   .swiper-arrow {
+    transform: scale(2);
+    &.home {
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          stroke: var(--color-primary);
+        }
+      }
+    }
     &::after {
       content: unset;
       font-size: 0;
     }
-    &::before {
-      content: "";
-      position: absolute;
-      inset: -10px;
-      background-color: transparent;
-    }
     @media (max-width: 991px) {
       display: none;
     }
+    svg {
+      path {
+        transition: all 0.4s;
+      }
+    }
   }
   .swiper-button-next {
-    right: 40px;
+    right: 53px;
+    @media (max-width: 991px) {
+      right: 45px;
+    }
   }
   .swiper-button-prev {
-    left: 40px;
+    left: 53px;
+    @media (max-width: 991px) {
+      left: 45px;
+    }
   }
 }
