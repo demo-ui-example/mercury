@@ -907,3 +907,19 @@
 .effect-line {
   line-height: 1.4;
 }
+
+.distortion-img,
+.distortion-img-nav {
+  overflow: hidden;
+
+  img {
+    transition: transform 0.4s ease;
+    transform: scale(1);
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+  }
+}

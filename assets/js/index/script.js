@@ -617,7 +617,7 @@ function distortionImgNav() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", distortionImgNav);
+// document.addEventListener("DOMContentLoaded", distortionImgNav);
 
 function bookingOffer() {
   const form = $("form.booking-offer");
@@ -1080,7 +1080,7 @@ const init = () => {
   sectionAccommodation();
   swiperFacility();
   ctaMess();
-  distortionImg();
+  // distortionImg();
   swiperAccommodation();
   loadingBanner();
   filterGalleryMobile();
