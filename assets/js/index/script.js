@@ -396,6 +396,10 @@ function ctaMess() {
       self.direction === 1
         ? $("#cta-mess").addClass("hide")
         : $("#cta-mess").removeClass("hide");
+
+      self.direction === 1
+        ? $(".button-find-room").addClass("hide")
+        : $(".button-find-room").removeClass("hide");
     },
   });
 }
@@ -448,16 +452,6 @@ function loadingBanner() {
           document.getElementById("header").classList.remove("hide-header");
           classesRemoved = true;
           ScrollTrigger.refresh();
-          gsap.to(".button-find-room", {
-            scrollTrigger: {
-              trigger: "body",
-              start: "top+=100vh top",
-              end: "bottom top",
-              toggleClass: { targets: ".button-find-room", className: "hide" },
-              toggleActions: "play none reverse none",
-              // markers: true,
-            },
-          });
 
           lenis.scrollTo(0, { immediate: true });
         } else if (self.progress > 0.03) {
