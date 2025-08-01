@@ -337,12 +337,19 @@
   width: 100%;
   display: none;
   transition: all 0.3s ease;
+  opacity: 1;
+  visibility: visible;
   @media (max-width: 991px) {
     display: block;
   }
   &.hide {
+    opacity: 0;
     pointer-events: none;
     transform: translateY(100%);
+  }
+  &.hide-by-loading {
+    opacity: 0;
+    visibility: hidden;
   }
   button {
     width: 100%;
