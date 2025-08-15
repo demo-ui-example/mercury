@@ -389,15 +389,17 @@ function swiperAccommodation() {
 
 function ctaMess() {
   ScrollTrigger.create({
-    start: "top top",
+    start: "top+=100vh top",
     end: 99999,
     paused: true,
     onUpdate: (self) => {
-      if (self.direction === 1) {
-        $("#cta-mess, .button-find-room").addClass("hide");
-      } else {
-        $("#cta-mess, .button-find-room").removeClass("hide");
-      }
+      self.direction === 1
+        ? $("#cta-mess").addClass("hide")
+        : $("#cta-mess").removeClass("hide");
+
+      self.direction === 1
+        ? $(".button-find-room").addClass("hide")
+        : $(".button-find-room").removeClass("hide");
     }
   });
 }
@@ -464,7 +466,8 @@ function loadingBanner() {
         $(".button-find-room").remove("hide hide-by-loading");
         if ($(".banner-booking").length)
           $(".banner-booking").removeClass("hide");
-
+        if ($(".button-find-room").length)
+          $(".button-find-room ").removeClass("hide-by-loading");
         // Reset scroll trigger và cuộn về vị trí bắt đầu (top trang)
         const start = self.start;
 
