@@ -1,4 +1,8 @@
 .destination-detail {
+  @media (max-width: 991px) {
+    margin-top: 40px;
+  }
+
   .detail-wrapper {
     padding: 0 80px;
 
@@ -16,8 +20,8 @@
 
     .col-media {
       height: max-content;
-      // position: sticky;
-      // top: 120px;
+      position: sticky;
+      top: 100px;
 
       @media (max-width: 991px) {
         margin-top: 40px;
@@ -267,6 +271,23 @@
       p {
         font-size: 16px;
         line-height: 24px;
+      }
+
+      strong {
+        font-weight: 900;
+      }
+
+      ul {
+        list-style: disc;
+        padding-left: 22px;
+      }
+
+      .wp-block-heading {
+        margin-bottom: 16px;
+      }
+
+      .wp-block-image {
+        margin: 16px 0;
       }
 
       h4 {
